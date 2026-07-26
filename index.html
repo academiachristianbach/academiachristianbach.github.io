@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Academia Christian Bach - Clases de Música Personalizadas</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#F8F7F4;color:#1a1a1a;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  a{text-decoration:none;color:inherit}
+  .page{display:none}
+  .page.active{display:block;animation:fadeIn .35s ease}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+  .nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.05);padding:0 18px}
+  .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:58px}
+  .nav-logo{display:flex;align-items:center;gap:8px;cursor:pointer}
+  .nav-logo svg{width:30px;height:30px}
+  .nav-logo span{font-size:15px;font-weight:700}
+  .nav-back{display:none;align-items:center;gap:6px;font-size:14px;font-weight:600;color:#111111;cursor:pointer;background:none;border:none}
+  .nav-cta{background:#1a1a1a;color:#fff;border:none;padding:9px 16px;border-radius:100px;font-size:13px;font-weight:700;cursor:pointer;-webkit-appearance:none}
+
+  .hero{background:linear-gradient(135deg,#111111 0%,#1C1C1C 50%,#1a1a1a 100%);color:#fff;padding:95px 20px 55px;text-align:center;position:relative}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(201,162,39,.12) 0%,transparent 50%)}
+  .hero-content{position:relative;z-index:2;max-width:680px;margin:0 auto}
+  .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#C9A227;padding:6px 14px;border-radius:100px;font-size:12px;font-weight:500;margin-bottom:22px}
+  .hero h1{font-size:clamp(28px,7vw,50px);font-weight:800;line-height:1.08;margin-bottom:12px}
+  .hero h1 span{color:#C9A227;display:block}
+  .hero p{color:rgba(255,255,255,.65);font-size:clamp(14px,3.5vw,17px);max-width:480px;margin:0 auto 26px}
+  .btn-gold{display:inline-block;background:#C9A227;color:#1a1a1a;padding:14px 26px;border-radius:100px;font-size:15px;font-weight:700;margin-right:6px;margin-bottom:8px;cursor:pointer;border:none;-webkit-appearance:none}
+  .btn-outline{display:inline-block;background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.25);padding:14px 26px;border-radius:100px;font-size:15px;font-weight:600}
+  .hero-tagline{margin-top:32px;font-size:12px;color:rgba(255,255,255,.35);letter-spacing:2.5px;text-transform:uppercase}
+
+  .section{padding:55px 20px}
+  .container{max-width:1100px;margin:0 auto}
+  .section-header{text-align:center;margin-bottom:36px}
+  .section-tag{color:#111111;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px}
+  .section-title{font-size:clamp(24px,5.5vw,34px);font-weight:800;margin-top:6px}
+  .section-desc{color:#999;font-size:15px;max-width:480px;margin:8px auto 0}
+
+  .about{background:#fff}
+  .about-visual{background:linear-gradient(135deg,#1C1C1C 0%,#111111 100%);border-radius:20px;height:260px;display:flex;align-items:center;justify-content:center;margin-bottom:28px;position:relative}
+  .about-visual::after{content:'Medellín → El Mundo';position:absolute;bottom:18px;color:rgba(255,255,255,.3);font-size:11px;letter-spacing:3px;text-transform:uppercase}
+  .about-visual svg{width:80px;height:80px;opacity:.5}
+  .about h3{font-size:26px;font-weight:800;margin-bottom:12px}
+  .about p{color:#555;font-size:15px;margin-bottom:12px}
+  .features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+  .feature{display:flex;gap:10px;align-items:flex-start}
+  .feature-icon{width:36px;height:36px;background:rgba(107,142,90,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .feature-icon svg{width:18px;height:18px}
+  .feature h4{font-size:14px;font-weight:700}
+  .feature p{font-size:12px;color:#999;margin:0}
+
+  .courses{background:#F8F7F4}
+  .course-card{background:#fff;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,.04);margin-bottom:14px;cursor:pointer;transition:all .25s}
+  .course-card:hover{transform:translateY(-3px);box-shadow:0 10px 35px rgba(0,0,0,.1)}
+  .course-img{height:150px;display:flex;align-items:center;justify-content:center;position:relative}
+  .course-img.guitarra{background:linear-gradient(135deg,#3d2817 0%,#5a3a1f 100%)}
+  .course-img.piano{background:linear-gradient(135deg,#1a1a2e 0%,#2d2d44 100%)}
+  .course-img.bateria{background:linear-gradient(135deg,#2e1a1a 0%,#442d2d 100%)}
+  .course-img.bajo{background:linear-gradient(135deg,#1a2e1a 0%,#2d442d 100%)}
+  .course-img.ukelele{background:linear-gradient(135deg,#8B6914 0%,#a67c00 100%)}
+  .course-img.voz{background:linear-gradient(135deg,#2e1a2e 0%,#442d44 100%)}
+  .course-img.electrica{background:linear-gradient(135deg,#1a1a1a 0%,#333 100%)}
+  .course-img.produccion{background:linear-gradient(135deg,#0d1f2d 0%,#1a3a52 100%)}
+  .course-img svg{width:56px;height:56px;opacity:.65}
+  .course-badge{position:absolute;top:10px;right:10px;background:#C9A227;color:#1a1a1a;font-size:10px;font-weight:800;padding:3px 10px;border-radius:100px;text-transform:uppercase}
+  .course-body{padding:16px}
+  .course-body h3{font-size:17px;font-weight:800;margin-bottom:3px}
+  .course-body p{font-size:13px;color:#999;margin-bottom:10px}
+  .course-meta{display:flex;justify-content:space-between;align-items:center}
+  .course-level{font-size:11px;color:#111111;font-weight:700;text-transform:uppercase}
+  .course-arrow{width:30px;height:30px;border-radius:50%;background:#F8F7F4;display:flex;align-items:center;justify-content:center}
+
+  .why{background:linear-gradient(135deg,#111111 0%,#1C1C1C 100%);color:#fff}
+  .why .section-title{color:#fff}.why .section-desc{color:rgba(255,255,255,.5)}
+  .why-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:26px 18px;text-align:center;margin-bottom:14px}
+  .why-icon{width:48px;height:48px;background:rgba(201,162,39,.15);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+  .why-icon svg{width:24px;height:24px}
+  .why-card h3{font-size:16px;font-weight:700;margin-bottom:5px}
+  .why-card p{font-size:13px;color:rgba(255,255,255,.55)}
+
+  .testi{background:#fff}
+  .testi-card{background:#F8F7F4;border-radius:20px;padding:22px;margin-bottom:14px}
+  .testi-quote{font-size:34px;color:#C9A227;opacity:.3;line-height:1;font-family:Georgia,serif;margin-bottom:-6px}
+  .testi-text{font-size:14px;color:#555;line-height:1.7;margin-bottom:14px;font-style:italic}
+  .testi-author{display:flex;align-items:center;gap:10px}
+  .testi-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#1C1C1C,#111111);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+  .testi-name{font-weight:700;font-size:14px}
+  .testi-role{font-size:12px;color:#999}
+
+  .cta{background:linear-gradient(135deg,#111111 0%,#1C1C1C 100%);text-align:center;padding:55px 20px}
+  .cta h2{font-size:clamp(22px,5.5vw,32px);font-weight:800;color:#fff;margin-bottom:10px}
+  .cta p{color:rgba(255,255,255,.6);font-size:15px;margin-bottom:22px}
+
+  .contact{background:#fff}
+  .contact-info h3{font-size:24px;font-weight:800;margin-bottom:10px}
+  .contact-info>p{color:#999;margin-bottom:22px;font-size:14px}
+  .contact-item{display:flex;gap:12px;margin-bottom:14px}
+  .contact-icon{width:42px;height:42px;background:rgba(107,142,90,.1);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .contact-icon svg{width:20px;height:20px}
+  .contact-item h4{font-size:14px;font-weight:700}
+  .contact-item p{font-size:13px;color:#999;margin:0}
+  .contact-form{background:#F8F7F4;padding:26px;border-radius:20px;margin-top:26px}
+  .form-group{margin-bottom:16px}
+  .form-group label{display:block;font-size:11px;font-weight:700;margin-bottom:4px;text-transform:uppercase;letter-spacing:.5px}
+  .form-group input,.form-group select,.form-group textarea{width:100%;padding:12px;border:1.5px solid rgba(0,0,0,.06);border-radius:10px;font-size:15px;background:#fff;font-family:inherit;-webkit-appearance:none}
+  .form-group textarea{min-height:80px;resize:vertical}
+  .form-submit{width:100%;background:#1a1a1a;color:#fff;border:none;padding:14px;border-radius:10px;font-size:15px;font-weight:700;-webkit-appearance:none;cursor:pointer}
+
+  .footer{background:#1a1a1a;color:#fff;padding:40px 20px 20px}
+  .footer-brand svg{width:40px;height:40px;margin-bottom:12px}
+  .footer-brand p{color:rgba(255,255,255,.45);font-size:13px;line-height:1.6;margin-bottom:14px}
+  .footer-social{display:flex;gap:10px;margin-bottom:22px}
+  .footer-social a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center}
+  .footer-social a svg{width:16px;height:16px}
+  .footer-col h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
+  .footer-col ul{list-style:none}
+  .footer-col li{margin-bottom:8px}
+  .footer-col a{color:rgba(255,255,255,.45);font-size:13px}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:16px;margin-top:22px}
+  .footer-bottom p{font-size:11px;color:rgba(255,255,255,.35)}
+
+  .inst-hero{padding:85px 20px 45px;text-align:center;position:relative;overflow:hidden}
+  .inst-hero.guitarra{background:linear-gradient(135deg,#3d2817 0%,#5a3a1f 100%)}
+  .inst-hero.piano{background:linear-gradient(135deg,#1a1a2e 0%,#2d2d44 100%)}
+  .inst-hero.bateria{background:linear-gradient(135deg,#2e1a1a 0%,#442d2d 100%)}
+  .inst-hero.bajo{background:linear-gradient(135deg,#1a2e1a 0%,#2d442d 100%)}
+  .inst-hero.ukelele{background:linear-gradient(135deg,#8B6914 0%,#a67c00 100%)}
+  .inst-hero.voz{background:linear-gradient(135deg,#2e1a2e 0%,#442d44 100%)}
+  .inst-hero.electrica{background:linear-gradient(135deg,#1a1a1a 0%,#333 100%)}
+  .inst-hero.produccion{background:linear-gradient(135deg,#0d1f2d 0%,#1a3a52 100%)}
+  .inst-hero-content{position:relative;z-index:2;max-width:680px;margin:0 auto;color:#fff}
+  .inst-hero svg{width:72px;height:72px;opacity:.75;margin-bottom:14px}
+  .inst-hero h1{font-size:clamp(26px,6vw,42px);font-weight:800;margin-bottom:8px}
+  .inst-hero p{color:rgba(255,255,255,.7);font-size:15px;max-width:480px;margin:0 auto}
+  .inst-hero .medellin-tag{display:inline-block;margin-top:18px;font-size:11px;color:rgba(255,255,255,.35);letter-spacing:2px;text-transform:uppercase}
+
+  .method-section{background:#fff;padding:45px 20px}
+  .method-grid{display:grid;gap:16px;margin-top:28px}
+  .method-card{background:#F8F7F4;border-radius:20px;padding:24px;border-left:4px solid #C9A227}
+  .method-card h3{font-size:17px;font-weight:800;margin-bottom:6px}
+  .method-card p{font-size:14px;color:#666;line-height:1.65}
+  .method-num{width:34px;height:34px;background:#C9A227;color:#1a1a1a;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;margin-bottom:12px}
+
+  .skills-section{background:#F8F7F4;padding:45px 20px}
+  .skills-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+  .skill-item{background:#fff;padding:12px 14px;border-radius:14px;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;border:1px solid rgba(0,0,0,.04)}
+  .skill-item svg{width:18px;height:18px;flex-shrink:0}
+
+  .forwho-section{background:#fff;padding:45px 20px}
+  .forwho-grid{display:grid;gap:12px;margin-top:22px}
+  .forwho-card{background:linear-gradient(135deg,#111111 0%,#1C1C1C 100%);color:#fff;padding:22px;border-radius:18px;text-align:center}
+  .forwho-card h4{font-size:15px;font-weight:700;margin-bottom:4px}
+  .forwho-card p{font-size:13px;color:rgba(255,255,255,.7)}
+
+  .pricing-section{background:#F8F7F4;padding:45px 20px;text-align:center}
+  .pricing-card{background:#fff;border-radius:24px;padding:32px 24px;max-width:380px;margin:20px auto 0;border:2px solid #C9A227;position:relative}
+  .pricing-card .popular-badge{position:absolute;top:-11px;left:50%;transform:translateX(-50%);background:#C9A227;color:#1a1a1a;font-size:10px;font-weight:800;padding:4px 14px;border-radius:100px;text-transform:uppercase}
+  .pricing-card h3{font-size:18px;font-weight:800;margin-bottom:6px}
+  .pricing-card .price{font-size:38px;font-weight:800;color:#1a1a1a}
+  .pricing-card .price span{font-size:15px;color:#999;font-weight:500}
+  .pricing-card ul{list-style:none;text-align:left;margin:20px 0}
+  .pricing-card li{font-size:13px;color:#555;padding:7px 0;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;gap:8px}
+  .pricing-card li svg{width:16px;height:16px;flex-shrink:0}
+
+  .inst-cta{background:linear-gradient(135deg,#111111 0%,#1C1C1C 100%);padding:45px 20px;text-align:center;color:#fff}
+  .inst-cta h2{font-size:24px;font-weight:800;margin-bottom:8px}
+  .inst-cta p{color:rgba(255,255,255,.6);font-size:14px;margin-bottom:20px}
+
+  @media(min-width:768px){
+    .about-grid,.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+    .courses-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .why-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .testi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:28px}
+    .method-grid{grid-template-columns:repeat(2,1fr)}
+    .forwho-grid{grid-template-columns:repeat(3,1fr)}
+    .about-visual{height:100%;margin-bottom:0}
+  }
+  @media(min-width:1024px){
+    .courses-grid{grid-template-columns:repeat(4,1fr)}
+    .why-grid{grid-template-columns:repeat(4,1fr)}
+    .testi-grid{grid-template-columns:repeat(3,1fr)}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="goHome()">
+      <svg viewBox="0 0 100 100" fill="none"><path d="M50 5C50 5 30 25 30 45C30 55 38 62 50 62C62 62 70 55 70 45C70 35 60 25 50 5Z" stroke="#C9A227" stroke-width="2.5" fill="none"/><path d="M50 62C50 62 35 72 35 85C35 92 42 95 50 95C58 95 65 92 65 85C65 75 55 68 50 62Z" stroke="#C9A227" stroke-width="2.5" fill="none"/><circle cx="50" cy="85" r="4" fill="#C9A227"/></svg>
+      <span>Christian Bach</span>
+    </div>
+    <button class="nav-back" id="navBack" onclick="goHome()">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Volver
+    </button>
+    <button class="nav-cta" onclick="goContact()">Reserva</button>
+  </div>
+</div>
+
+<!-- ===================== HOME ===================== -->
+<div class="page active" id="page-home">
+
+<div class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Desde febrero de 2022 · Medellín, Colombia</div>
+    <h1>Despierta tu talento <span>musical</span></h1>
+    <p>Clases personalizadas de música en línea y a domicilio. Sin miedo, sin prisa, a tu ritmo. Desde Medellín para el mundo.</p>
+    <a class="btn-gold" onclick="document.getElementById('home-courses').scrollIntoView({behavior:'smooth'})">Ver cursos</a>
+    <a class="btn-outline" onclick="document.getElementById('home-contact').scrollIntoView({behavior:'smooth'})">Clase de prueba gratis</a>
+    <div class="hero-tagline">Medellín → El Mundo</div>
+  </div>
+</div>
+
+<div class="section about" id="home-about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual">
+        <svg viewBox="0 0 120 120" fill="none"><circle cx="60" cy="60" r="55" stroke="#C9A227" stroke-width="1" opacity="0.3"/><circle cx="60" cy="60" r="40" stroke="#C9A227" stroke-width="1" opacity="0.2"/><path d="M60 15C60 15 40 35 40 55C40 65 48 72 60 72C72 72 80 65 80 55C80 45 70 35 60 15Z" stroke="#C9A227" stroke-width="2" fill="none"/><path d="M60 72C60 72 45 82 45 95C45 102 52 105 60 105C68 105 75 102 75 95C75 85 65 78 60 72Z" stroke="#C9A227" stroke-width="2" fill="none"/><circle cx="60" cy="95" r="4" fill="#C9A227"/></svg>
+      </div>
+      <div>
+        <div class="section-tag">Sobre nosotros</div>
+        <h3>Música sin etiquetas, sin miedo</h3>
+        <p>En Academia Christian Bach creemos que la música es para <strong>todo el mundo</strong>. No necesitas ser un prodigio ni tener experiencia previa. Nacimos en Medellín en 2022 con una idea simple: que aprender música sea tan natural como tomar tinto con amigos.</p>
+        <p>Nuestros docentes son músicos de verdad, con experiencia en escenarios reales, y llegan a donde estés: El Poblado, Envigado, Sabaneta o directo a tu pantalla.</p>
+        <div class="features">
+          <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><h4>Desde cero</h4><p>Sin conocimientos previos</p></div></div>
+          <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div><div><h4>A tu ritmo</h4><p>Horarios que se adaptan</p></div></div>
+          <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div><h4>Profes reales</h4><p>Músicos en escena activa</p></div></div>
+          <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div><h4>Donde sea</h4><p>A domicilio o online</p></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section courses" id="home-courses">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Nuestra oferta</div>
+      <h2 class="section-title">¿Qué quieres tocar?</h2>
+      <p class="section-desc">Ocho caminos para encontrar tu sonido. Toca la tarjeta para conocer la metodología.</p>
+    </div>
+    <div class="courses-grid">
+      <div class="course-card" onclick="goTo('guitarra')"><div class="course-img guitarra"><svg viewBox="0 0 80 80" fill="none"><path d="M40 8C40 8 20 20 20 40C20 52 28 60 40 60C52 60 60 52 60 40C60 30 50 20 40 8Z" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><circle cx="40" cy="48" r="6" stroke="white" stroke-width="1.5" fill="none" opacity="0.6"/><path d="M40 8L40 20" stroke="white" stroke-width="1.5" opacity="0.5"/></svg><span class="course-badge">Top #1</span></div><div class="course-body"><h3>Guitarra Acústica</h3><p>Desde tu primera canción hasta componer las tuyas.</p><div class="course-meta"><span class="course-level">Desde cero</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
+      <div class="course-card" onclick="goTo('electrica')"><div class="course-img electrica"><svg viewBox="0 0 80 80" fill="none"><rect x="18" y="10" width="44" height="56" rx="6" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><circle cx="40" cy="52" r="5" stroke="white" stroke-width="1.5" fill="none" opacity="0.6"/><rect x="32" y="10" width="16" height="12" stroke="white" stroke-width="1.5" fill="none" opacity="0.5"/></svg></div><div class="course-body"><h3>Guitarra Eléctrica</h3><p>Rock, blues, jazz y solos que enamoran.</p><div class="course-meta"><span class="course-level">Todos los niveles</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
+      <div class="course-card" onclick="goTo('piano')"><div class="course-img piano"><svg viewBox="0 0 80 80" fill="none"><rect x="10" y="25" width="60" height="35" rx="3" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><rect x="16" y="25" width="8" height="22" fill="white" opacity="0.4"/><rect x="28" y="25" width="8" height="22" fill="white" opacity="0.4"/><rect x="44" y="25" width="8" height="22" fill="white" opacity="0.4"/><rect x="56" y="25" width="8" height="22" fill="white" opacity="0.4"/></svg></div><div class="course-body"><h3>Piano / Teclado</h3><p>Armonía, técnica y canciones que emocionan.</p><div class="course-meta"><span class="course-level">Desde cero</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
+      <div class="course-card" onclick="goTo('bateria')"><div class="course-img bateria"><svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="45" r="22" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><circle cx="40" cy="45" r="16" stroke="white" stroke-width="1.5" fill="none" opacity="0.5"/><ellipse cx="40" cy="20" rx="16" ry="4" stroke="white" stroke-width="1.5" fill="none" opacity="0.6"/><line x1="20" y1="20" x2="20" y2="45" stroke="white" stroke-width="1.5" opacity="0.4"/><line x1="60" y1="20" x2="60" y2="45" stroke="white" stroke-width="1.5" opacity="0.4"/></svg></div><div class="course-body"><h3>Batería</h3><p>Ritmo, groove y energía en cada golpe.</p><div class="course-meta"><span class="course-level">Todos los niveles</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
+      <div class="course-card" onclick="goTo('bajo')"><div class="course-img bajo"><svg viewBox="0 0 80 80" fill="none"><rect x="25" y="8" width="30" height="64" rx="8" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><circle cx="40" cy="58" r="6" stroke="white" stroke-width="1.5" fill="none" opacity="0.6"/><line x1="40" y1="8" x2="40" y2="20" stroke="white" stroke-width="2" opacity="0.5"/></svg></div><div class="course-body"><h3>Bajo Eléctrico</h3><p>La base de toda banda. Groove infalible.</p><div class="course-meta"><span class="course-level">Todos los niveles</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
+      <div class="course-card" onclick="goTo('ukelele')"><div class="course-img ukelele"><svg viewBox="0 0 80 80" fill="none"><ellipse cx="40" cy="50" rx="18" ry="22" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><circle cx="40" cy="58" r="4" stroke="white" stroke-width="1.5" fill="none" opacity="0.6"/><rect x="36" y="12" width="8" height="20" rx="2" stroke="white" stroke-width="1.5" fill="none" opacity="0.5"/></svg><span class="course-badge">Ideal niños</span></div><div class="course-body"><h3>Ukelele</h3><p>Pequeño, divertido y perfecto para empezar.</p><div class="course-meta"><span class="course-level">Principiantes</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
+      <div class="course-card" onclick="goTo('voz')"><div class="course-img voz"><svg viewBox="0 0 80 80" fill="none"><path d="M40 12C32 12 26 18 26 26C26 32 30 37 35 39L35 52C35 58 30 62 24 62" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><path d="M40 12C48 12 54 18 54 26C54 32 50 37 45 39L45 52C45 58 50 62 56 62" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><line x1="40" y1="62" x2="40" y2="72" stroke="white" stroke-width="2" opacity="0.5"/><ellipse cx="40" cy="76" rx="10" ry="3" stroke="white" stroke-width="1.5" fill="none" opacity="0.4"/></svg></div><div class="course-body"><h3>Técnica Vocal</h3><p>Encuentra tu voz. Canta con confianza.</p><div class="course-meta"><span class="course-level">Todos los niveles</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
+      <div class="course-card" onclick="goTo('produccion')"><div class="course-img produccion"><svg viewBox="0 0 80 80" fill="none"><rect x="12" y="30" width="56" height="28" rx="3" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><rect x="18" y="36" width="6" height="16" rx="1" fill="white" opacity="0.4"/><rect x="28" y="32" width="6" height="20" rx="1" fill="white" opacity="0.4"/><rect x="38" y="38" width="6" height="14" rx="1" fill="white" opacity="0.4"/><rect x="48" y="34" width="6" height="18" rx="1" fill="white" opacity="0.4"/><rect x="58" y="40" width="6" height="12" rx="1" fill="white" opacity="0.4"/></svg><span class="course-badge">Nuevo</span></div><div class="course-body"><h3>Producción Musical</h3><p>Crea beats y mezcla como un pro.</p><div class="course-meta"><span class="course-level">Intermedio+</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section why">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">¿Por qué nosotros?</div><h2 class="section-title">La experiencia Christian Bach</h2><p class="section-desc">Más que clases, un espacio donde la música fluye natural.</p></div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A227" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h3>100% personalizado</h3><p>Tu plan, tu música, tu ritmo. Nadie es igual.</p></div>
+      <div class="why-card"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A227" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div><h3>Profe de verdad</h3><p>Músicos activos, no solo teóricos. Viven la música.</p></div>
+      <div class="why-card"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A227" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div><h3>Online o a domicilio</h3><p>En tu casa, en tu oficina o desde tu celular.</p></div>
+      <div class="why-card"><div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#C9A227" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div><h3>Sin contratos</h3><p>Paquetes flexibles. Tú decides cuándo y cuánto.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="section testi">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Testimonios</div><h2 class="section-title">Historias reales</h2></div>
+    <div class="testi-grid">
+      <div class="testi-card"><div class="testi-quote">"</div><p class="testi-text">Empecé desde cero con guitarra y en 6 meses ya tocaba en reuniones con amigos. El profe nunca me hizo sentir que no servía.</p><div class="testi-author"><div class="testi-avatar">JL</div><div><div class="testi-name">Juan López</div><div class="testi-role">Estudiante de guitarra · El Poblado</div></div></div></div>
+      <div class="testi-card"><div class="testi-quote">"</div><p class="testi-text">Las clases online son súper chéveres. Mi profe de piano está en Medellín y yo en Bogotá, pero la conexión es total.</p><div class="testi-author"><div class="testi-avatar">MR</div><div><div class="testi-name">María Ríos</div><div class="testi-role">Estudiante de piano · Online</div></div></div></div>
+      <div class="testi-card"><div class="testi-quote">"</div><p class="testi-text">Mi hijo de 9 años tomó ukelele y ahora no suelta el instrumento. El profe sabe cómo enganchar a los niños.</p><div class="testi-author"><div class="testi-avatar">CG</div><div><div class="testi-name">Carlos Gómez</div><div class="testi-role">Padre · Envigado</div></div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="cta">
+  <div class="container">
+    <h2>¿Listo para sonar?</h2>
+    <p>Tu primera clase de prueba es gratis. Sin compromiso, sin letra pequeña.</p>
+    <a class="btn-gold" style="font-size:16px;padding:16px 32px;" onclick="document.getElementById('home-contact').scrollIntoView({behavior:'smooth'})">Quiero mi clase gratis</a>
+  </div>
+</div>
+
+<div class="section contact" id="home-contact">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Contacto</div><h2 class="section-title">Hablemos de música</h2></div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Escríbenos por WhatsApp</h3>
+        <p>Respondemos rápido. Estamos en Medellín pero llegamos a donde estés.</p>
+        <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><h4>WhatsApp</h4><p>+57 300 000 0000</p></div></div>
+        <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><h4>Email</h4><p>hola@academiachristianbach.com</p></div></div>
+        <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h4>Cobertura</h4><p>El Poblado, Envigado, Sabaneta y Online</p></div></div>
+      </div>
+      <form class="contact-form" onsubmit="event.preventDefault();var b=this.querySelector('.form-submit');b.textContent='¡Mensaje enviado!';b.style.background='#C9A227';b.style.color='#1a1a1a';setTimeout(function(){b.textContent='Enviar mensaje';b.style.background='';b.style.color='';},3000);">
+        <div class="form-group"><label>Nombre</label><input type="text" placeholder="Tu nombre" required></div>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="tu@email.com" required></div>
+        <div class="form-group"><label>Instrumento</label><select required><option value="">Selecciona</option><option>Guitarra Acústica</option><option>Guitarra Eléctrica</option><option>Piano</option><option>Batería</option><option>Bajo</option><option>Ukelele</option><option>Voz</option><option>Producción</option></select></div>
+        <div class="form-group"><label>Mensaje</label><textarea placeholder="Cuéntanos qué quieres aprender..."></textarea></div>
+        <button type="submit" class="form-submit">Enviar mensaje</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <svg viewBox="0 0 100 100" fill="none"><path d="M50 5C50 5 30 25 30 45C30 55 38 62 50 62C62 62 70 55 70 45C70 35 60 25 50 5Z" stroke="#C9A227" stroke-width="2.5" fill="none"/><path d="M50 62C50 62 35 72 35 85C35 92 42 95 50 95C58 95 65 92 65 85C65 75 55 68 50 62Z" stroke="#C9A227" stroke-width="2.5" fill="none"/><circle cx="50" cy="85" r="4" fill="#C9A227"/></svg>
+        <p>Academia Christian Bach — Clases de música personalizadas. Desde Medellín para el mundo.</p>
+        <div class="footer-social">
+          <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="white" stroke="none"/></svg></a>
+          <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="#"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Cursos</h4><ul><li><a href="#">Guitarra</a></li><li><a href="#">Piano</a></li><li><a href="#">Batería</a></li><li><a href="#">Bajo</a></li><li><a href="#">Voz</a></li></ul></div>
+      <div class="footer-col"><h4>Academia</h4><ul><li><a href="#">Nosotros</a></li><li><a href="#">Testimonios</a></li><li><a href="#">Contacto</a></li></ul></div>
+      <div class="footer-col"><h4>Legal</h4><ul><li><a href="#">Privacidad</a></li><li><a href="#">Términos</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Academia Christian Bach</p><p>Medellín, Colombia · Hecho con orgullo paisa</p></div>
+  </div>
+</div>
+
+</div>
+
+<!-- ===================== GUITARRA ACÚSTICA ===================== -->
+<div class="page" id="page-guitarra">
+<div class="inst-hero guitarra">
+  <div class="inst-hero-content">
+    <svg viewBox="0 0 80 80" fill="none"><path d="M40 8C40 8 20 20 20 40C20 52 28 60 40 60C52 60 60 52 60 40C60 30 50 20 40 8Z" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><circle cx="40" cy="48" r="6" stroke="white" stroke-width="1.5" fill="none" opacity="0.6"/><path d="M40 8L40 20" stroke="white" stroke-width="1.5" opacity="0.5"/></svg>
+    <h1>Guitarra Acústica</h1>
+    <p>El instrumento más popular del mundo. Tu compañero perfecto para tardes en el balcón, parches con amigos o composiciones propias.</p>
+    <div class="medellin-tag">Metodología Christian Bach · Medellín</div>
+  </div>
+</div>
+<div class="method-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Nuestra metodología</div><h2 class="section-title">Cómo enseñamos guitarra</h2></div>
+    <div class="method-grid">
+      <div class="method-card"><div class="method-num">1</div><h3>Desde la canción, no desde la teoría</h3><p>No te aburrimos con escalas antes de tocar. Empezamos con canciones que te gustan para que sientas progreso desde la primera clase. La teoría llega natural, cuando ya la necesitas.</p></div>
+      <div class="method-card"><div class="method-num">2</div><h3>Técnica relajada, sin tensión</h3><p>Trabajamos postura, posición de manos y respiración para que tocar no duela. Muchos se frustran porque les duele los dedos — nosotros evitamos eso desde el día uno.</p></div>
+      <div class="method-card"><div class="method-num">3</div><h3>Rasgueo, arpegio y fingerstyle</h3><p>Progresamos desde rasgueos básicos hasta patrones complejos de fingerstyle. Cada técnica se aprende con canciones reales, no ejercicios abstractos.</p></div>
+      <div class="method-card"><div class="method-num">4</div><h3>Tu repertorio, tu estilo</h3><p>¿Te gusta el vallenato, el rock, el pop latino o el indie? Adaptamos el repertorio a lo que te mueve. La práctica es más fácil cuando tocas lo que amas.</p></div>
+    </div>
+  </div>
+</div>
+<div class="skills-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Lo que aprenderás</div><h2 class="section-title">Habilidades que te llevas</h2></div>
+    <div class="skills-list">
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Acordes mayores y menores</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Rasgueos y ritmos</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Arpegios y fingerpicking</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Cambio de acordes fluido</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Capo y afinación alternativa</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Introducción a la composición</div>
+    </div>
+  </div>
+</div>
+<div class="forwho-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">¿Para quién es?</div><h2 class="section-title">Este curso es para ti si...</h2></div>
+    <div class="forwho-grid">
+      <div class="forwho-card"><h4>Nunca has tocado</h4><p>Empezamos desde cero, sin presión.</p></div>
+      <div class="forwho-card"><h4>Quieres cantar y tocar</h4><p>Aprende a acompañarte a ti mismo.</p></div>
+      <div class="forwho-card"><h4>Buscas un hobby</h4><p>Desconecta del trabajo, conecta con la música.</p></div>
+    </div>
+  </div>
+</div>
+<div class="pricing-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Inversión</div><h2 class="section-title">Planes accesibles</h2></div>
+    <div class="pricing-card">
+      <span class="popular-badge">Más popular</span>
+      <h3>Clase individual</h3>
+      <div class="price">$60.000 <span>COP / hora</span></div>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>1 hora de clase personalizada</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Material de práctica incluido</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A domicilio o en línea</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Agenda flexible</li>
+      </ul>
+      <button class="btn-gold" style="width:100%;margin:0;" onclick="goContact()">Agendar clase de prueba gratis</button>
+    </div>
+  </div>
+</div>
+<div class="inst-cta">
+  <h2>¿Listo para tu primera canción?</h2>
+  <p>En Medellín o desde cualquier parte del mundo. Tu guitarra te espera.</p>
+  <button class="btn-gold" onclick="goContact()">Quiero empezar</button>
+</div>
+</div>
+
+<!-- ===================== GUITARRA ELÉCTRICA ===================== -->
+<div class="page" id="page-electrica">
+<div class="inst-hero electrica">
+  <div class="inst-hero-content">
+    <svg viewBox="0 0 80 80" fill="none"><rect x="18" y="10" width="44" height="56" rx="6" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><circle cx="40" cy="52" r="5" stroke="white" stroke-width="1.5" fill="none" opacity="0.6"/><rect x="32" y="10" width="16" height="12" stroke="white" stroke-width="1.5" fill="none" opacity="0.5"/></svg>
+    <h1>Guitarra Eléctrica</h1>
+    <p>Distorsión, solos y actitud. El instrumento del rock, el blues y todo lo que mueve el alma.</p>
+    <div class="medellin-tag">Metodología Christian Bach · Medellín</div>
+  </div>
+</div>
+<div class="method-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Nuestra metodología</div><h2 class="section-title">Cómo enseñamos guitarra eléctrica</h2></div>
+    <div class="method-grid">
+      <div class="method-card"><div class="method-num">1</div><h3>El sonido antes que la velocidad</h3><p>No se trata de tocar rápido, se trata de tocar con sentido. Enseñamos a escuchar tu tono, tu ataque y tu vibrato antes de correr por el diapasón.</p></div>
+      <div class="method-card"><div class="method-num">2</div><h3>Escalas que se escuchan</h3><p>Pentatónica, mayor, menor, modos... pero aplicadas a canciones que conoces. No memorizas patrones, entiendes por qué funcionan.</p></div>
+      <div class="method-card"><div class="method-num">3</div><h3>Efectos y amplificación</h3><p>Aprendes a usar tu pedalera y tu amp como parte de tu instrumento. Overdrive, delay, reverb... cada efecto cuenta una historia.</p></div>
+      <div class="method-card"><div class="method-num">4</div><h3>Improvisación sin miedo</h3><p>Te damos las herramientas para improvisar sobre cualquier progresión. Jam sessions, solos y momentos de pura expresión.</p></div>
+    </div>
+  </div>
+</div>
+<div class="skills-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Lo que aprenderás</div><h2 class="section-title">Habilidades que te llevas</h2></div>
+    <div class="skills-list">
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Técnica de púa y legato</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Escalas pentatónicas y modales</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Bending, vibrato y slides</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Riffs icónicos por género</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Configuración de pedalera</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Improvisación sobre backing tracks</div>
+    </div>
+  </div>
+</div>
+<div class="forwho-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">¿Para quién es?</div><h2 class="section-title">Este curso es para ti si...</h2></div>
+    <div class="forwho-grid">
+      <div class="forwho-card"><h4>Sueñas con el escenario</h4><p>Preparación para tocar en vivo.</p></div>
+      <div class="forwho-card"><h4>Amas el rock y el blues</h4><p>Desde Hendrix hasta Juanes.</p></div>
+      <div class="forwho-card"><h4>Quieres solos con alma</h4><p>Técnica + sentimiento = magia.</p></div>
+    </div>
+  </div>
+</div>
+<div class="pricing-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Inversión</div><h2 class="section-title">Planes accesibles</h2></div>
+    <div class="pricing-card">
+      <span class="popular-badge">Más popular</span>
+      <h3>Clase individual</h3>
+      <div class="price">$65.000 <span>COP / hora</span></div>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>1 hora de clase personalizada</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Backing tracks exclusivos</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A domicilio o en línea</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Agenda flexible</li>
+      </ul>
+      <button class="btn-gold" style="width:100%;margin:0;" onclick="goContact()">Agendar clase de prueba gratis</button>
+    </div>
+  </div>
+</div>
+<div class="inst-cta">
+  <h2>¿Listo para encender el amp?</h2>
+  <p>Desde Medellín al mundo. Tu sonido eléctrico te espera.</p>
+  <button class="btn-gold" onclick="goContact()">Quiero empezar</button>
+</div>
+</div>
+
+<!-- ===================== PIANO ===================== -->
+<div class="page" id="page-piano">
+<div class="inst-hero piano">
+  <div class="inst-hero-content">
+    <svg viewBox="0 0 80 80" fill="none"><rect x="10" y="25" width="60" height="35" rx="3" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><rect x="16" y="25" width="8" height="22" fill="white" opacity="0.4"/><rect x="28" y="25" width="8" height="22" fill="white" opacity="0.4"/><rect x="44" y="25" width="8" height="22" fill="white" opacity="0.4"/><rect x="56" y="25" width="8" height="22" fill="white" opacity="0.4"/></svg>
+    <h1>Piano / Teclado</h1>
+    <p>El instrumento más completo. Armonía, melodía y ritmo en tus diez dedos.</p>
+    <div class="medellin-tag">Metodología Christian Bach · Medellín</div>
+  </div>
+</div>
+<div class="method-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Nuestra metodología</div><h2 class="section-title">Cómo enseñamos piano</h2></div>
+    <div class="method-grid">
+      <div class="method-card"><div class="method-num">1</div><h3>Coordenadas antes de partituras</h3><p>Empezamos con números y acordes (sistema Nashville) para que toques canciones enteras en semanas. La lectura musical llega después, cuando ya disfrutas tocar.</p></div>
+      <div class="method-card"><div class="method-num">2</div><h3>Manos independientes, paso a paso</h3><p>Separar manos, combinarlas, añadir acompañamiento. Cada ejercicio es una canción real. No hay aburrimiento en nuestras clases.</p></div>
+      <div class="method-card"><div class="method-num">3</div><h3>Armonía que se siente</h3><p>Entiendes por qué ciertos acordes suenan bien juntos. Progresiones, cadencias, modulaciones... pero explicado como una conversación entre amigos.</p></div>
+      <div class="method-card"><div class="method-num">4</div><h3>De lo clásico a lo moderno</h3><p>Bach, Beethoven, pero también Bad Bunny, Morat y salsa. El piano no tiene género, tiene alma.</p></div>
+    </div>
+  </div>
+</div>
+<div class="skills-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Lo que aprenderás</div><h2 class="section-title">Habilidades que te llevas</h2></div>
+    <div class="skills-list">
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Lectura de acordes y cifrado</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Técnica de ambas manos</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Escalas y arpegios aplicados</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Acompañamiento y solo</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Introducción a la improvisación</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Lectura musical gradual</div>
+    </div>
+  </div>
+</div>
+<div class="forwho-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">¿Para quién es?</div><h2 class="section-title">Este curso es para ti si...</h2></div>
+    <div class="forwho-grid">
+      <div class="forwho-card"><h4>Quieres entender música</h4><p>El piano es la base de toda teoría.</p></div>
+      <div class="forwho-card"><h4>Sueñas con tocar y cantar</h4><p>Acompáñate a ti mismo en el piano.</p></div>
+      <div class="forwho-card"><h4>Buscas disciplina creativa</h4><p>Desarrolla concentración y expresión.</p></div>
+    </div>
+  </div>
+</div>
+<div class="pricing-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Inversión</div><h2 class="section-title">Planes accesibles</h2></div>
+    <div class="pricing-card">
+      <span class="popular-badge">Más popular</span>
+      <h3>Clase individual</h3>
+      <div class="price">$65.000 <span>COP / hora</span></div>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>1 hora de clase personalizada</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Partituras y material incluido</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A domicilio o en línea</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Agenda flexible</li>
+      </ul>
+      <button class="btn-gold" style="width:100%;margin:0;" onclick="goContact()">Agendar clase de prueba gratis</button>
+    </div>
+  </div>
+</div>
+<div class="inst-cta">
+  <h2>¿Listo para tus primeras teclas?</h2>
+  <p>El piano no discrimina. Desde Medellín para tus dedos.</p>
+  <button class="btn-gold" onclick="goContact()">Quiero empezar</button>
+</div>
+</div>
+
+<!-- ===================== BATERÍA ===================== -->
+<div class="page" id="page-bateria">
+<div class="inst-hero bateria">
+  <div class="inst-hero-content">
+    <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="45" r="22" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><circle cx="40" cy="45" r="16" stroke="white" stroke-width="1.5" fill="none" opacity="0.5"/><ellipse cx="40" cy="20" rx="16" ry="4" stroke="white" stroke-width="1.5" fill="none" opacity="0.6"/><line x1="20" y1="20" x2="20" y2="45" stroke="white" stroke-width="1.5" opacity="0.4"/><line x1="60" y1="20" x2="60" y2="45" stroke="white" stroke-width="1.5" opacity="0.4"/></svg>
+    <h1>Batería</h1>
+    <p>El latido de toda banda. Ritmo, energía y pura adrenalina en cada golpe.</p>
+    <div class="medellin-tag">Metodología Christian Bach · Medellín</div>
+  </div>
+</div>
+<div class="method-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Nuestra metodología</div><h2 class="section-title">Cómo enseñamos batería</h2></div>
+    <div class="method-grid">
+      <div class="method-card"><div class="method-num">1</div><h3>Ritmo en el cuerpo antes que en las manos</h3><p>Empezamos consciente del pulso: caminar, bailar, sentir el beat. La batería es movimiento, no solo golpes. Cuando tu cuerpo entiende el ritmo, las manos siguen solas.</p></div>
+      <div class="method-card"><div class="method-num">2</div><h3>Independencia gradual</h3><p>Pie derecho en el bombo, mano derecha en el hi-hat, mano izquierda en la caja. Separamos, combinamos, añadimos. Cada paso es una victoria.</p></div>
+      <div class="method-card"><div class="method-num">3</div><h3>Grooves de verdad</h3><p>Aprendes los ritmos que suenan en la radio: salsa, reggaetón, rock, funk. No ejercicios aburridos, grooves que quieres tocar una y otra vez.</p></div>
+      <div class="method-card"><div class="method-num">4</div><h3>Lectura sin terror</h3><p>La partitura de batería se lee como un mapa. Te enseñamos a leerla sin miedo, como si fuera una receta de cocina. Simple y práctico.</p></div>
+    </div>
+  </div>
+</div>
+<div class="skills-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Lo que aprenderás</div><h2 class="section-title">Habilidades que te llevas</h2></div>
+    <div class="skills-list">
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Postura y técnica de baquetas</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Independencia de extremidades</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Grooves por género musical</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Rellenos (fills) creativos</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Lectura de partituras de percusión</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Dinámica y control de volumen</div>
+    </div>
+  </div>
+</div>
+<div class="forwho-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">¿Para quién es?</div><h2 class="section-title">Este curso es para ti si...</h2></div>
+    <div class="forwho-grid">
+      <div class="forwho-card"><h4>Tienes energía de sobra</h4><p>La batería es tu válvula de escape.</p></div>
+      <div class="forwho-card"><h4>Quieres ser el latido</h4><p>Sin batería no hay banda.</p></div>
+      <div class="forwho-card"><h4>Buscas disciplina física</h4><p>Coordinación, resistencia y diversión.</p></div>
+    </div>
+  </div>
+</div>
+<div class="pricing-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Inversión</div><h2 class="section-title">Planes accesibles</h2></div>
+    <div class="pricing-card">
+      <span class="popular-badge">Más popular</span>
+      <h3>Clase individual</h3>
+      <div class="price">$65.000 <span>COP / hora</span></div>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>1 hora de clase personalizada</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Práctica en pad o batería real</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A domicilio o en línea</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Agenda flexible</li>
+      </ul>
+      <button class="btn-gold" style="width:100%;margin:0;" onclick="goContact()">Agendar clase de prueba gratis</button>
+    </div>
+  </div>
+</div>
+<div class="inst-cta">
+  <h2>¿Listo para marcar el ritmo?</h2>
+  <p>La batería no necesita permiso. Desde Medellín, con actitud.</p>
+  <button class="btn-gold" onclick="goContact()">Quiero empezar</button>
+</div>
+</div>
+
+<!-- ===================== BAJO ===================== -->
+<div class="page" id="page-bajo">
+<div class="inst-hero bajo">
+  <div class="inst-hero-content">
+    <svg viewBox="0 0 80 80" fill="none"><rect x="25" y="8" width="30" height="64" rx="8" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><circle cx="40" cy="58" r="6" stroke="white" stroke-width="1.5" fill="none" opacity="0.6"/><line x1="40" y1="8" x2="40" y2="20" stroke="white" stroke-width="2" opacity="0.5"/></svg>
+    <h1>Bajo Eléctrico</h1>
+    <p>La columna vertebral de la música. Groove, peso y presencia en cuatro cuerdas.</p>
+    <div class="medellin-tag">Metodología Christian Bach · Medellín</div>
+  </div>
+</div>
+<div class="method-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Nuestra metodología</div><h2 class="section-title">Cómo enseñamos bajo</h2></div>
+    <div class="method-grid">
+      <div class="method-card"><div class="method-num">1</div><h3>El groove antes que las notas</h3><p>El bajo no es guitarra con menos cuerdas. Es un instrumento de tiempo, de espacio, de sentir el hueco entre los golpes. Empezamos escuchando, no tocando.</p></div>
+      <div class="method-card"><div class="method-num">2</div><h3>Líneas de bajo que cantan</h3><p>Aprendes a crear líneas que complementan la melodía sin competir con ella. Desde el bajo sencillo de reggaetón hasta el walking bass de jazz.</p></div>
+      <div class="method-card"><div class="method-num">3</div><h3>Slap, pop y técnicas avanzadas</h3><p>Cuando ya dominas el groove, llegan las técnicas que hacen brillar al bajo. Slap, pop, tapping... cada una con su momento y su canción.</p></div>
+      <div class="method-card"><div class="method-num">4</div><h3>Tocar con otros</h3><p>El bajo es un instrumento de banda. Practicamos con pistas, con otros estudiantes, para que aprendas a escuchar y responder en tiempo real.</p></div>
+    </div>
+  </div>
+</div>
+<div class="skills-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Lo que aprenderás</div><h2 class="section-title">Habilidades que te llevas</h2></div>
+    <div class="skills-list">
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Técnica de dedos y púa</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Escalas y arpegios aplicados</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Líneas de bajo por género</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Slap y pop básico</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Lectura de tablatura</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Tocar con banda / pistas</div>
+    </div>
+  </div>
+</div>
+<div class="forwho-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">¿Para quién es?</div><h2 class="section-title">Este curso es para ti si...</h2></div>
+    <div class="forwho-grid">
+      <div class="forwho-card"><h4>Te gusta el groove</h4><p>Sientes el bajo en el pecho.</p></div>
+      <div class="forwho-card"><h4>Quieres tocar en banda</h4><p>El bajista siempre tiene trabajo.</p></div>
+      <div class="forwho-card"><h4>Vienes de guitarra</h4><p>Transición natural y enriquecedora.</p></div>
+    </div>
+  </div>
+</div>
+<div class="pricing-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Inversión</div><h2 class="section-title">Planes accesibles</h2></div>
+    <div class="pricing-card">
+      <span class="popular-badge">Más popular</span>
+      <h3>Clase individual</h3>
+      <div class="price">$60.000 <span>COP / hora</span></div>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>1 hora de clase personalizada</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Pistas de práctica incluidas</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A domicilio o en línea</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Agenda flexible</li>
+      </ul>
+      <button class="btn-gold" style="width:100%;margin:0;" onclick="goContact()">Agendar clase de prueba gratis</button>
+    </div>
+  </div>
+</div>
+<div class="inst-cta">
+  <h2>¿Listo para sentir el groove?</h2>
+  <p>El bajo es el alma de la banda. Desde Medellín, con peso.</p>
+  <button class="btn-gold" onclick="goContact()">Quiero empezar</button>
+</div>
+</div>
+
+<!-- ===================== UKELELE ===================== -->
+<div class="page" id="page-ukelele">
+<div class="inst-hero ukelele">
+  <div class="inst-hero-content">
+    <svg viewBox="0 0 80 80" fill="none"><ellipse cx="40" cy="50" rx="18" ry="22" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><circle cx="40" cy="58" r="4" stroke="white" stroke-width="1.5" fill="none" opacity="0.6"/><rect x="36" y="12" width="8" height="20" rx="2" stroke="white" stroke-width="1.5" fill="none" opacity="0.5"/></svg>
+    <h1>Ukelele</h1>
+    <p>Pequeño, portátil y lleno de alegría. El instrumento perfecto para iniciarse sin miedo.</p>
+    <div class="medellin-tag">Metodología Christian Bach · Medellín</div>
+  </div>
+</div>
+<div class="method-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Nuestra metodología</div><h2 class="section-title">Cómo enseñamos ukelele</h2></div>
+    <div class="method-grid">
+      <div class="method-card"><div class="method-num">1</div><h3>Divertirse desde el primer acorde</h3><p>El ukelele tiene solo 4 cuerdas y es súper amigable con los dedos. En la primera clase ya tocas una canción completa. Esa victoria temprana es clave para seguir.</p></div>
+      <div class="method-card"><div class="method-num">2</div><h3>Canciones que todos conocen</h3><p>Desde "Riptide" hasta canciones de Disney y reggaetón. El ukelele se adapta a todo. Incluso canciones complejas suenan increíbles en este instrumento.</p></div>
+      <div class="method-card"><div class="method-num">3</div><h3>Rasgueo y fingerpicking</h3><p>Progresamos desde rasgueos simples hasta patrones de fingerpicking que suenan profesionales. El ukelele es versátil, no subestimes su potencial.</p></div>
+      <div class="method-card"><div class="method-num">4</div><h3>Ideal para niños y adultos</h3><p>Su tamaño lo hace perfecto para manos pequeñas, pero su sonido encanta a cualquier edad. Es el instrumento familiar por excelencia.</p></div>
+    </div>
+  </div>
+</div>
+<div class="skills-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Lo que aprenderás</div><h2 class="section-title">Habilidades que te llevas</h2></div>
+    <div class="skills-list">
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Acordes básicos y avanzados</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Rasgueos rítmicos</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Fingerpicking patterns</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Cantar y tocar</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Transición a guitarra</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Repertorio variado</div>
+    </div>
+  </div>
+</div>
+<div class="forwho-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">¿Para quién es?</div><h2 class="section-title">Este curso es para ti si...</h2></div>
+    <div class="forwho-grid">
+      <div class="forwho-card"><h4>Tienes manos pequeñas</h4><p>Ideal para niños y adultos.</p></div>
+      <div class="forwho-card"><h4>Quieres algo portátil</h4><p>Llévalo a todas partes.</p></div>
+      <div class="forwho-card"><h4>Buscas diversión rápida</h4><p>Resultados desde la primera clase.</p></div>
+    </div>
+  </div>
+</div>
+<div class="pricing-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Inversión</div><h2 class="section-title">Planes accesibles</h2></div>
+    <div class="pricing-card">
+      <span class="popular-badge">Más popular</span>
+      <h3>Clase individual</h3>
+      <div class="price">$55.000 <span>COP / hora</span></div>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>1 hora de clase personalizada</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Material para niños y adultos</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A domicilio o en línea</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Agenda flexible</li>
+      </ul>
+      <button class="btn-gold" style="width:100%;margin:0;" onclick="goContact()">Agendar clase de prueba gratis</button>
+    </div>
+  </div>
+</div>
+<div class="inst-cta">
+  <h2>¿Listo para sonreír tocando?</h2>
+  <p>El ukelele es pura alegría. Desde Medellín con amor.</p>
+  <button class="btn-gold" onclick="goContact()">Quiero empezar</button>
+</div>
+</div>
+
+<!-- ===================== VOZ ===================== -->
+<div class="page" id="page-voz">
+<div class="inst-hero voz">
+  <div class="inst-hero-content">
+    <svg viewBox="0 0 80 80" fill="none"><path d="M40 12C32 12 26 18 26 26C26 32 30 37 35 39L35 52C35 58 30 62 24 62" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><path d="M40 12C48 12 54 18 54 26C54 32 50 37 45 39L45 52C45 58 50 62 56 62" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><line x1="40" y1="62" x2="40" y2="72" stroke="white" stroke-width="2" opacity="0.5"/><ellipse cx="40" cy="76" rx="10" ry="3" stroke="white" stroke-width="1.5" fill="none" opacity="0.4"/></svg>
+    <h1>Técnica Vocal</h1>
+    <p>Tu voz es tu instrumento más personal. Aprende a usarla con confianza, salud y emoción.</p>
+    <div class="medellin-tag">Metodología Christian Bach · Medellín</div>
+  </div>
+</div>
+<div class="method-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Nuestra metodología</div><h2 class="section-title">Cómo enseñamos canto</h2></div>
+    <div class="method-grid">
+      <div class="method-card"><div class="method-num">1</div><h3>Respiración consciente</h3><p>El canto empieza en el diafragma, no en la garganta. Te enseñamos a respirar para cantar, no solo para vivir. Cuando controlas el aire, controlas la nota.</p></div>
+      <div class="method-card"><div class="method-num">2</div><h3>Afinación sin vergüenza</h3><p>"Yo canto feo" es el mito más grande. La afinación se entrena como un músculo. Con ejercicios específicos y paciencia, cualquiera puede cantar afinado.</p></div>
+      <div class="method-card"><div class="method-num">3</div><h3>Estilo sin forzar</h3><p>Enseñamos técnica para que puedas cantar cualquier género sin dañarte. Pop, salsa, rock, balada... tu voz, tu estilo, sin imitaciones forzadas.</p></div>
+      <div class="method-card"><div class="method-num">4</div><h3>Interpretación y escena</h3><p>Cantar no es solo emitir notas. Es contar una historia. Trabajamos expresión, conexión con la letra y presencia escénica para que brilles.</p></div>
+    </div>
+  </div>
+</div>
+<div class="skills-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Lo que aprenderás</div><h2 class="section-title">Habilidades que te llevas</h2></div>
+    <div class="skills-list">
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Respiración diafragmática</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Afinación y entrenamiento auditivo</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Registros: grave, medio y agudo</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Técnica por género musical</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Proyección sin forzar</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Interpretación y expresión</div>
+    </div>
+  </div>
+</div>
+<div class="forwho-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">¿Para quién es?</div><h2 class="section-title">Este curso es para ti si...</h2></div>
+    <div class="forwho-grid">
+      <div class="forwho-card"><h4>Crees que no puedes cantar</h4><p>Te demostramos que sí puedes.</p></div>
+      <div class="forwho-card"><h4>Quieres cantar en público</h4><p>Karaoke, eventos, o el escenario.</p></div>
+      <div class="forwho-card"><h4>Eres músico que quiere cantar</h4><p>Canta mientras tocas tu instrumento.</p></div>
+    </div>
+  </div>
+</div>
+<div class="pricing-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Inversión</div><h2 class="section-title">Planes accesibles</h2></div>
+    <div class="pricing-card">
+      <span class="popular-badge">Más popular</span>
+      <h3>Clase individual</h3>
+      <div class="price">$60.000 <span>COP / hora</span></div>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>1 hora de clase personalizada</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Ejercicios de vocalización</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A domicilio o en línea</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Agenda flexible</li>
+      </ul>
+      <button class="btn-gold" style="width:100%;margin:0;" onclick="goContact()">Agendar clase de prueba gratis</button>
+    </div>
+  </div>
+</div>
+<div class="inst-cta">
+  <h2>¿Listo para que te escuchen?</h2>
+  <p>Tu voz es única. Desde Medellín, al mundo.</p>
+  <button class="btn-gold" onclick="goContact()">Quiero empezar</button>
+</div>
+</div>
+
+<!-- ===================== PRODUCCIÓN ===================== -->
+<div class="page" id="page-produccion">
+<div class="inst-hero produccion">
+  <div class="inst-hero-content">
+    <svg viewBox="0 0 80 80" fill="none"><rect x="12" y="30" width="56" height="28" rx="3" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><rect x="18" y="36" width="6" height="16" rx="1" fill="white" opacity="0.4"/><rect x="28" y="32" width="6" height="20" rx="1" fill="white" opacity="0.4"/><rect x="38" y="38" width="6" height="14" rx="1" fill="white" opacity="0.4"/><rect x="48" y="34" width="6" height="18" rx="1" fill="white" opacity="0.4"/><rect x="58" y="40" width="6" height="12" rx="1" fill="white" opacity="0.4"/></svg>
+    <h1>Producción Musical</h1>
+    <p>Crea tu propio sonido. Desde la primera idea hasta el tema finalizado.</p>
+    <div class="medellin-tag">Metodología Christian Bach · Medellín</div>
+  </div>
+</div>
+<div class="method-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Nuestra metodología</div><h2 class="section-title">Cómo enseñamos producción</h2></div>
+    <div class="method-grid">
+      <div class="method-card"><div class="method-num">1</div><h3>Tu DAW, tu taller</h3><p>Trabajamos con el software que tengas: FL Studio, Ableton, Logic, GarageBand. No necesitas equipo caro para empezar. Una laptop y audífonos son suficientes.</p></div>
+      <div class="method-card"><div class="method-num">2</div><h3>Beats que suenan profesionales</h3><p>Desde el loop básico hasta la estructura completa de una canción. Kick, snare, hi-hats, bass, melodía... cada elemento en su lugar.</p></div>
+      <div class="method-card"><div class="method-num">3</div><h3>Mezcla que brilla</h3><p>EQ, compresión, reverb, delay. Aprendes a darle espacio a cada instrumento para que tu mezcla suene clara y potente en cualquier parlante.</p></div>
+      <div class="method-card"><div class="method-num">4</div><h3>De la idea al lanzamiento</h3><p>No solo producimos, te preparamos para distribuir tu música. Spotify, YouTube, Apple Music. Tu canción, tu sello, tu camino.</p></div>
+    </div>
+  </div>
+</div>
+<div class="skills-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Lo que aprenderás</div><h2 class="section-title">Habilidades que te llevas</h2></div>
+    <div class="skills-list">
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Manejo de DAW (FL, Ableton, Logic)</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Programación de beats y drums</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Síntesis y diseño de sonido</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Mezcla: EQ, compresión, efectos</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Arreglo y estructura de canción</div>
+      <div class="skill-item"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Masterización básica y exportación</div>
+    </div>
+  </div>
+</div>
+<div class="forwho-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">¿Para quién es?</div><h2 class="section-title">Este curso es para ti si...</h2></div>
+    <div class="forwho-grid">
+      <div class="forwho-card"><h4>Quieres producir tus temas</h4><p>De la idea al beat finalizado.</p></div>
+      <div class="forwho-card"><h4>Eres beatmaker</h4><p>Lleva tus beats al siguiente nivel.</p></div>
+      <div class="forwho-card"><h4>Quieres tu home studio</h4><p>Configuración profesional en casa.</p></div>
+    </div>
+  </div>
+</div>
+<div class="pricing-section">
+  <div class="container">
+    <div class="section-header"><div class="section-tag">Inversión</div><h2 class="section-title">Planes accesibles</h2></div>
+    <div class="pricing-card">
+      <span class="popular-badge">Más popular</span>
+      <h3>Clase individual</h3>
+      <div class="price">$70.000 <span>COP / hora</span></div>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>1 hora de clase personalizada</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Proyectos prácticos en tu DAW</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>En línea (compartir pantalla)</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Agenda flexible</li>
+      </ul>
+      <button class="btn-gold" style="width:100%;margin:0;" onclick="goContact()">Agendar clase de prueba gratis</button>
+    </div>
+  </div>
+</div>
+<div class="inst-cta">
+  <h2>¿Listo para crear tu primer hit?</h2>
+  <p>El estudio está en tu laptop. Desde Medellín, al mundo entero.</p>
+  <button class="btn-gold" onclick="goContact()">Quiero empezar</button>
+</div>
+</div>
+
+<!-- ===================== JAVASCRIPT ===================== -->
+<script>
+function goHome(){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
+  document.getElementById('page-home').classList.add('active');
+  document.getElementById('navBack').style.display='none';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function goTo(inst){
+  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
+  document.getElementById('page-'+inst).classList.add('active');
+  document.getElementById('navBack').style.display='flex';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function goContact(){
+  goHome();
+  setTimeout(function(){
+    var el=document.getElementById('home-contact');
+    if(el)el.scrollIntoView({behavior:'smooth'});
+  },350);
+}
+</script>
+
+</body>
+</html>
