@@ -392,7 +392,7 @@
   .about-section.mission-section{background:#F8F7F4}
   .about-section.vision-section{background:#fff}
   .about-section .about-grid{gap:40px;align-items:center}
-  .about-section .about-visual{height:320px;border-radius:24px;box-shadow:0 8px 30px rgba(0,0,0,.1);overflow:hidden;display:flex;align-items:center;justify-content:center}
+  .about-section .about-visual{height:260px;border-radius:24px;box-shadow:0 8px 30px rgba(0,0,0,.1);overflow:hidden;display:flex;align-items:center;justify-content:center}
   .about-section .about-visual svg{width:90px;height:90px;opacity:.5}
   .about-section h3{font-size:28px;font-weight:800;margin-bottom:16px;color:#1a1a1a;line-height:1.2}
   .about-section p{color:#555;font-size:15.5px;line-height:1.75;margin-bottom:14px}
@@ -401,7 +401,7 @@
 
   @media(min-width:768px){
     .about-section .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
-    .about-section .about-visual{height:100%;min-height:320px;margin-bottom:0}
+    .about-section .about-visual{height:100%;min-height:260px;margin-bottom:0}
   }
   @media(max-width:767px){
     .about-section{padding:50px 16px}
@@ -503,6 +503,11 @@
         <h3>Misión</h3>
         <p>Brindar formación musical personalizada de alta calidad, adaptada a las necesidades, intereses y niveles de cada estudiante.</p>
         <p>Fomentamos el desarrollo artístico integral mediante una enseñanza cercana, creativa y humana, tanto en modalidad online como presencial, contribuyendo al crecimiento cultural y personal de nuestros alumnos.</p>
+        <div class="features">
+          <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><div><h4>Formación integral</h4><p>Técnica, teoría y expresión</p></div></div>
+          <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div><h4>Enseñanza personalizada</h4><p>Adaptada a cada estudiante</p></div></div>
+          <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div><h4>Desarrollo artístico</h4><p>Creatividad sin límites</p></div></div>
+        </div>
       </div>
       <div class="about-visual">
         <img src="Images/mision.png" alt="Misión - Academia Christian Bach" loading="lazy">
@@ -523,6 +528,11 @@
         <p>Ser una academia de referencia en Colombia y Latinoamérica, donde personas de todas las edades descubran el poder transformador de la música.</p>
         <p>Aspiramos a construir una comunidad apasionada por el aprendizaje musical, donde cada clase sea una experiencia divertida, cercana y significativa.</p>
         <p>Nos proyectamos como un espacio accesible y personalizado, donde crecer como músico no dependa de la edad, el nivel o la ubicación, sino de la motivación de cada estudiante para expresarse, aprender y disfrutar el arte.</p>
+        <div class="features">
+          <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><div><h4>Referente internacional</h4><p>Latinoamérica y el mundo</p></div></div>
+          <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-7 7c0 2.38 1.19 4.47 3 5.74V17h8v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 00-7-7z"/></svg></div><div><h4>Innovación educativa</h4><p>Métodos creativos y efectivos</p></div></div>
+          <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div><div><h4>Crecimiento continuo</h4><p>Siempre evolucionando</p></div></div>
+        </div>
       </div>
     </div>
   </div>
@@ -584,7 +594,7 @@
               <li style="font-size:14px;color:#555;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Material de estudio incluido</li>
               <li style="font-size:14px;color:#555;padding:8px 0;display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Seguimiento del proceso musical</li>
             </ul>
-            <a href="https://wa.me/573214502162?text=Hola,%20quiero%20información%20sobre%20las%20clases%20online" class="btn-gold" style="display:inline-block;width:100%;max-width:280px;text-align:center;">Reservar clases online</a>
+            <a href="https://wa.me/573214502161?text=Hola,%20quiero%20información%20sobre%20las%20clases%20online" class="btn-gold" style="display:inline-block;width:100%;max-width:280px;text-align:center;">Reservar clases online</a>
           </div>
         </div>
         <div class="course-card">
@@ -602,7 +612,7 @@
               <li style="font-size:14px;color:#555;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Disponible en: Envigado</li>
               <li style="font-size:14px;color:#555;padding:8px 0;display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Disponible en: Sabaneta</li>
             </ul>
-            <a href="https://wa.me/573214502162?text=Hola,%20quiero%20información%20sobre%20las%20clases%20presenciales" class="btn-gold" style="display:inline-block;width:100%;max-width:280px;text-align:center;background:#1a1a1a;color:#fff;">Reservar clases presenciales</a>
+            <a href="https://wa.me/573214502161?text=Hola,%20quiero%20información%20sobre%20las%20clases%20presenciales" class="btn-gold" style="display:inline-block;width:100%;max-width:280px;text-align:center;background:#1a1a1a;color:#fff;">Reservar clases presenciales</a>
           </div>
         </div>
       </div>
@@ -625,7 +635,7 @@
   <div class="container">
     <h2>¿Listo para sonar?</h2>
     <p>Paquetes de 4 clases personalizadas. Sin compromiso, sin letra pequeña.</p>
-    <a class="btn-gold" style="font-size:16px;padding:16px 32px;" href="https://wa.me/573214502162?text=Hola,%20quiero%20información%20sobre%20el%20paquete%20de%204%20clases" target="_blank" rel="noopener">Quiero mi paquete de 4 clases</a>
+    <a class="btn-gold" style="font-size:16px;padding:16px 32px;" href="https://wa.me/573214502161?text=Hola,%20quiero%20información%20sobre%20el%20paquete%20de%204%20clases" target="_blank" rel="noopener">Quiero mi paquete de 4 clases</a>
   </div>
 </div>
 
@@ -636,7 +646,7 @@
       <div class="contact-info">
         <h3>Escríbenos por WhatsApp</h3>
         <p>Respondemos rápido. Estamos en Medellín pero llegamos a donde estés.</p>
-        <a href="https://wa.me/573214502162" target="_blank" rel="noopener" class="contact-item" style="text-decoration:none;color:inherit;"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><h4>WhatsApp</h4><p>+57 321 450 2162</p></div></a>
+        <a href="https://wa.me/573214502161" target="_blank" rel="noopener" class="contact-item" style="text-decoration:none;color:inherit;"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><h4>WhatsApp</h4><p>+57 321 450 2161</p></div></a>
         <a href="https://wa.me/573205960276" target="_blank" rel="noopener" class="contact-item" style="text-decoration:none;color:inherit;"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><h4>WhatsApp</h4><p>+57 320 596 0276</p></div></a>
         <a href="mailto:academiachristianbach@gmail.com" class="contact-item" style="text-decoration:none;color:inherit;"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><h4>Correo</h4><p>academiachristianbach@gmail.com</p></div></a>
         <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><h4>Cobertura</h4><p>El Poblado, Envigado, Sabaneta y Online</p></div></div>
@@ -672,7 +682,7 @@
       </div>
       <div class="footer-col"><h4>Cursos</h4><ul><li><a href="#" onclick="goTo('guitarra');return false;">Guitarra Acústica</a></li><li><a href="#" onclick="goTo('electrica');return false;">Guitarra Eléctrica</a></li><li><a href="#" onclick="goTo('piano');return false;">Piano</a></li><li><a href="#" onclick="goTo('bateria');return false;">Batería</a></li><li><a href="#" onclick="goTo('bajo');return false;">Bajo</a></li><li><a href="#" onclick="goTo('ukelele');return false;">Ukulele</a></li><li><a href="#" onclick="goTo('voz');return false;">Técnica Vocal</a></li><li><a href="#" onclick="goTo('produccion');return false;">Producción Musical</a></li></ul></div>
       <div class="footer-col"><h4>Academia</h4><ul><li><a href="#" onclick="document.getElementById('home-about').scrollIntoView({behavior:'smooth'});return false;">Nosotros</a></li><li><a href="#" onclick="document.getElementById('home-mission').scrollIntoView({behavior:'smooth'});return false;">Misión</a></li><li><a href="#" onclick="document.getElementById('home-vision').scrollIntoView({behavior:'smooth'});return false;">Visión</a></li><li><a href="#" onclick="document.getElementById('home-courses').scrollIntoView({behavior:'smooth'});return false;">Cursos</a></li><li><a href="#" onclick="document.getElementById('home-contact').scrollIntoView({behavior:'smooth'});return false;">Contacto</a></li></ul></div>
-      <div class="footer-col"><h4>Contacto</h4><ul><li><a href="https://wa.me/573214502162" target="_blank" rel="noopener">WhatsApp +57 321 450 2162</a></li><li><a href="https://wa.me/573205960276" target="_blank" rel="noopener">WhatsApp +57 320 596 0276</a></li><li><a href="mailto:academiachristianbach@gmail.com">academiachristianbach@gmail.com</a></li><li><span style="color:rgba(255,255,255,.45);font-size:13px;">El Poblado, Envigado, Sabaneta y Online</span></li></ul></div>
+      <div class="footer-col"><h4>Contacto</h4><ul><li><a href="https://wa.me/573214502161" target="_blank" rel="noopener">WhatsApp +57 321 450 2161</a></li><li><a href="https://wa.me/573205960276" target="_blank" rel="noopener">WhatsApp +57 320 596 0276</a></li><li><a href="mailto:academiachristianbach@gmail.com">academiachristianbach@gmail.com</a></li><li><span style="color:rgba(255,255,255,.45);font-size:13px;">El Poblado, Envigado, Sabaneta y Online</span></li></ul></div>
     </div>
     <div class="footer-bottom"><p>© 2026 Academia Christian Bach · Todos los derechos reservados.</p><p>Medellín, Colombia · Hecho con orgullo paisa</p></div>
   </div>
@@ -741,7 +751,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Modalidad virtual por Google Meet</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Agenda flexible</li>
         </ul>
-        <a href="https://wa.me/573214502162?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20online%20de%20Guitarra%20Acústica" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar online</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20online%20de%20Guitarra%20Acústica" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar online</a>
       </div>
       <div class="pricing-card">
         <h3>Clases Presenciales</h3>
@@ -755,7 +765,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A domicilio en tu hogar</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>El Poblado, Envigado, Sabaneta</li>
         </ul>
-        <a href="https://wa.me/573214502162?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Guitarra%20Acústica" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Guitarra%20Acústica" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
       </div>
     </div>
   </div>
@@ -828,7 +838,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Modalidad virtual por Google Meet</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Agenda flexible</li>
         </ul>
-        <a href="https://wa.me/573214502162?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20online%20de%20Guitarra%20Eléctrica" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar online</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20online%20de%20Guitarra%20Eléctrica" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar online</a>
       </div>
       <div class="pricing-card">
         <h3>Clases Presenciales</h3>
@@ -842,7 +852,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A domicilio en tu hogar</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>El Poblado, Envigado, Sabaneta</li>
         </ul>
-        <a href="https://wa.me/573214502162?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Guitarra%20Eléctrica" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Guitarra%20Eléctrica" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
       </div>
     </div>
   </div>
@@ -915,7 +925,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Modalidad virtual por Google Meet</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Agenda flexible</li>
         </ul>
-        <a href="https://wa.me/573214502162?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20online%20de%20Piano" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar online</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20online%20de%20Piano" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar online</a>
       </div>
       <div class="pricing-card">
         <h3>Clases Presenciales</h3>
@@ -929,7 +939,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A domicilio en tu hogar</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>El Poblado, Envigado, Sabaneta</li>
         </ul>
-        <a href="https://wa.me/573214502162?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Piano" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Piano" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
       </div>
     </div>
   </div>
@@ -1002,7 +1012,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Modalidad virtual por Google Meet</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Agenda flexible</li>
         </ul>
-        <a href="https://wa.me/573214502162?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20online%20de%20Batería" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar online</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20online%20de%20Batería" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar online</a>
       </div>
       <div class="pricing-card">
         <h3>Clases Presenciales</h3>
@@ -1016,7 +1026,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A domicilio en tu hogar</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>El Poblado, Envigado, Sabaneta</li>
         </ul>
-        <a href="https://wa.me/573214502162?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Batería" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Batería" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
       </div>
     </div>
   </div>
@@ -1089,7 +1099,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Modalidad virtual por Google Meet</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Agenda flexible</li>
         </ul>
-        <a href="https://wa.me/573214502162?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20online%20de%20Bajo%20Eléctrico" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar online</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20online%20de%20Bajo%20Eléctrico" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar online</a>
       </div>
       <div class="pricing-card">
         <h3>Clases Presenciales</h3>
@@ -1103,7 +1113,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A domicilio en tu hogar</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>El Poblado, Envigado, Sabaneta</li>
         </ul>
-        <a href="https://wa.me/573214502162?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Bajo%20Eléctrico" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Bajo%20Eléctrico" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
       </div>
     </div>
   </div>
@@ -1176,7 +1186,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Modalidad virtual por Google Meet</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Agenda flexible</li>
         </ul>
-        <a href="https://wa.me/573214502162?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20online%20de%20Ukulele" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar online</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20online%20de%20Ukulele" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar online</a>
       </div>
       <div class="pricing-card">
         <h3>Clases Presenciales</h3>
@@ -1190,7 +1200,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A domicilio en tu hogar</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>El Poblado, Envigado, Sabaneta</li>
         </ul>
-        <a href="https://wa.me/573214502162?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Ukulele" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Ukulele" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
       </div>
     </div>
   </div>
@@ -1263,7 +1273,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Modalidad virtual por Google Meet</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Agenda flexible</li>
         </ul>
-        <a href="https://wa.me/573214502162?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20online%20de%20Técnica%20Vocal" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar online</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20online%20de%20Técnica%20Vocal" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar online</a>
       </div>
       <div class="pricing-card">
         <h3>Clases Presenciales</h3>
@@ -1277,7 +1287,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A domicilio en tu hogar</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>El Poblado, Envigado, Sabaneta</li>
         </ul>
-        <a href="https://wa.me/573214502162?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Técnica%20Vocal" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Técnica%20Vocal" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
       </div>
     </div>
   </div>
@@ -1350,7 +1360,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Modalidad virtual por Google Meet</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Agenda flexible</li>
         </ul>
-        <a href="https://wa.me/573214502162?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20online%20de%20Producción%20Musical" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar online</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20online%20de%20Producción%20Musical" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar online</a>
       </div>
       <div class="pricing-card">
         <h3>Clases Presenciales</h3>
@@ -1364,7 +1374,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>En tu hogar o estudio</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>El Poblado, Envigado, Sabaneta</li>
         </ul>
-        <a href="https://wa.me/573214502162?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Producción%20Musical" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Producción%20Musical" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
       </div>
     </div>
   </div>
