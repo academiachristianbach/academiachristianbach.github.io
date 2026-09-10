@@ -65,7 +65,7 @@
   .courses{background:#F8F7F4}
   .course-card{background:#fff;border-radius:20px;overflow:hidden;border:1px solid rgba(0,0,0,.04);margin-bottom:14px;cursor:pointer;transition:all .25s}
   .course-card:hover{transform:translateY(-3px);box-shadow:0 10px 35px rgba(0,0,0,.1)}
-  .course-img{height:150px;display:flex;align-items:center;justify-content:center;position:relative}
+  .course-img{height:150px;display:block;position:relative;overflow:hidden}
   .course-img.guitarra{background:linear-gradient(135deg,#3d2817 0%,#5a3a1f 100%)}
   .course-img.piano{background:linear-gradient(135deg,#1a1a2e 0%,#2d2d44 100%)}
   .course-img.bateria{background:linear-gradient(135deg,#2e1a1a 0%,#442d2d 100%)}
@@ -74,8 +74,8 @@
   .course-img.voz{background:linear-gradient(135deg,#2e1a2e 0%,#442d44 100%)}
   .course-img.electrica{background:linear-gradient(135deg,#1a1a1a 0%,#333 100%)}
   .course-img.produccion{background:linear-gradient(135deg,#0d1f2d 0%,#1a3a52 100%)}
-  .course-img svg{width:56px;height:56px;opacity:.65}
-  .course-badge{position:absolute;top:10px;right:10px;background:#C9A227;color:#1a1a1a;font-size:10px;font-weight:800;padding:3px 10px;border-radius:100px;text-transform:uppercase}
+  .course-img img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0}
+  .course-badge{position:absolute;top:10px;right:10px;background:#C9A227;color:#1a1a1a;font-size:10px;font-weight:800;padding:3px 10px;border-radius:100px;text-transform:uppercase;z-index:2}
   .course-body{padding:16px}
   .course-body h3{font-size:17px;font-weight:800;margin-bottom:3px}
   .course-body p{font-size:13px;color:#999;margin-bottom:10px}
@@ -257,7 +257,8 @@
   }
 
   .pricing-home-grid{grid-template-columns:1fr}
-  @media(min-width:768px){.pricing-home-grid{grid-template-columns:1fr 1fr!important}}
+  @media(min-width:768px){.pricing-home-grid{grid-template-columns:repeat(2,1fr)!important}}
+  @media(min-width:1024px){.pricing-home-grid{grid-template-columns:repeat(3,1fr)!important}}
   a.contact-item{cursor:pointer;transition:transform .15s}
   a.contact-item:hover{transform:translateX(4px)}
   a.contact-item:active{transform:translateX(2px)}
@@ -426,7 +427,6 @@
 
   /* Pricing home grid mejoras */
   .pricing-home-grid .course-card{border:2px solid transparent;transition:all .3s ease}
-  .pricing-home-grid .course-card:first-child{border-color:#C9A227}
   .pricing-home-grid .course-card:hover{border-color:rgba(201,162,39,.5)}
 
   /* Mejoras de navegación móvil */
@@ -439,6 +439,13 @@
   ::-webkit-scrollbar-thumb{background:#ccc;border-radius:4px}
   ::-webkit-scrollbar-thumb:hover{background:#999}
 
+
+  /* "MODALIDADES" con presencia de título de sección (solo tamaño, color intacto) */
+  #home-pricing .section-tag{font-size:21px;letter-spacing:3px;font-weight:800}
+
+  /* Mismo estilo para "Nuestra oferta" y "Contacto" */
+  #home-courses .section-tag{font-size:21px;letter-spacing:3px;font-weight:800}
+  #home-contact .section-tag{font-size:21px;letter-spacing:3px;font-weight:800}
 
   /* Pricing grid para instrumentos */
   .pricing-grid{grid-template-columns:1fr}
@@ -471,7 +478,81 @@
 
 
     /* ===== SECCIÓN RESEÑAS GOOGLE (CSS movido arriba) ===== */
+
+
+  /* ===== CORRECCIONES TARJETAS DE PRECIOS ===== */
+  .pricing-home-grid,
+  .pricing-grid {
+    align-items: stretch !important;
+  }
+
+  .pricing-home-grid .course-card,
+  .pricing-grid .pricing-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    animation: slideUp .5s ease both;
+  }
+
+  .pricing-home-grid .course-card:nth-child(1) { animation-delay: .05s; }
+  .pricing-home-grid .course-card:nth-child(2) { animation-delay: .1s; }
+  .pricing-home-grid .course-card:nth-child(3) { animation-delay: .15s; }
+
+  .pricing-grid .pricing-card:nth-child(1) { animation-delay: .05s; }
+  .pricing-grid .pricing-card:nth-child(2) { animation-delay: .1s; }
+
+  /* Contenedor interno de las tarjetas del home */
+  .pricing-home-grid .course-card > div {
+    flex: 1 !important;
+    justify-content: flex-start !important;
+    width: 100% !important;
+  }
+
+  /* Contenedor interno de las tarjetas de instrumentos */
+  .pricing-grid .pricing-card {
+    justify-content: flex-start;
+  }
+
+  /* Botones al final y dorados uniformes */
+  .pricing-home-grid .course-card .btn-gold,
+  .pricing-grid .pricing-card .btn-gold {
+    margin-top: auto !important;
+    background: #C9A227 !important;
+    color: #1a1a1a !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(201,162,39,.3) !important;
+  }
+
+  .pricing-home-grid .course-card .btn-gold:hover,
+  .pricing-grid .pricing-card .btn-gold:hover {
+    box-shadow: 0 8px 25px rgba(201,162,39,.45) !important;
+  }
+
+  /* PayPal al final en la tercera tarjeta del home */
+  .pricing-home-grid .course-card:nth-child(3) #paypal-container-NF58M9EJD2T3G {
+    margin-top: auto !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+  /* Responsive: en móvil las tarjetas mantienen flex */
+  @media(max-width:767px){
+    .pricing-home-grid .course-card,
+    .pricing-grid .pricing-card {
+      height: auto;
+      min-height: 100%;
+    }
+    .pricing-home-grid .course-card .btn-gold{
+      transform:none !important;
+      margin-top:16px !important;
+      position:static !important;
+    }
+  }
+
 </style>
+<script 
+  src="https://www.paypal.com/sdk/js?client-id=BAA2fCCS78YpjBAEo8o6kACMQqmVOl7X7ijWPwhu5tGwEsRQd0fPAms0qWvXBDhPpkXSizdv1tjVIJacWo&components=hosted-buttons&disable-funding=venmo&currency=USD">
+</script>
 </head>
 <body>
 
@@ -577,14 +658,14 @@
       <p class="section-desc">Ocho caminos para encontrar tu sonido. Toca la tarjeta para conocer la metodología.</p>
     </div>
     <div class="courses-grid">
-      <div class="course-card" onclick="goTo('guitarra')"><div class="course-img guitarra"><svg viewBox="0 0 80 80" fill="none"><path d="M40 8C40 8 20 20 20 40C20 52 28 60 40 60C52 60 60 52 60 40C60 30 50 20 40 8Z" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><circle cx="40" cy="48" r="6" stroke="white" stroke-width="1.5" fill="none" opacity="0.6"/><path d="M40 8L40 20" stroke="white" stroke-width="1.5" opacity="0.5"/></svg><span class="course-badge">Top #1</span></div><div class="course-body"><h3>Guitarra Acústica</h3><p>Desde tu primera canción hasta componer las tuyas.</p><div class="course-meta"><span class="course-level">Desde cero</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
-      <div class="course-card" onclick="goTo('electrica')"><div class="course-img electrica"><svg viewBox="0 0 80 80" fill="none"><rect x="18" y="10" width="44" height="56" rx="6" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><circle cx="40" cy="52" r="5" stroke="white" stroke-width="1.5" fill="none" opacity="0.6"/><rect x="32" y="10" width="16" height="12" stroke="white" stroke-width="1.5" fill="none" opacity="0.5"/></svg></div><div class="course-body"><h3>Guitarra Eléctrica</h3><p>Rock, blues, jazz y solos que enamoran.</p><div class="course-meta"><span class="course-level">Todos los niveles</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
-      <div class="course-card" onclick="goTo('piano')"><div class="course-img piano"><svg viewBox="0 0 80 80" fill="none"><rect x="10" y="25" width="60" height="35" rx="3" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><rect x="16" y="25" width="8" height="22" fill="white" opacity="0.4"/><rect x="28" y="25" width="8" height="22" fill="white" opacity="0.4"/><rect x="44" y="25" width="8" height="22" fill="white" opacity="0.4"/><rect x="56" y="25" width="8" height="22" fill="white" opacity="0.4"/></svg></div><div class="course-body"><h3>Piano / Teclado</h3><p>Armonía, técnica y canciones que emocionan.</p><div class="course-meta"><span class="course-level">Desde cero</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
-      <div class="course-card" onclick="goTo('bateria')"><div class="course-img bateria"><svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="45" r="22" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><circle cx="40" cy="45" r="16" stroke="white" stroke-width="1.5" fill="none" opacity="0.5"/><ellipse cx="40" cy="20" rx="16" ry="4" stroke="white" stroke-width="1.5" fill="none" opacity="0.6"/><line x1="20" y1="20" x2="20" y2="45" stroke="white" stroke-width="1.5" opacity="0.4"/><line x1="60" y1="20" x2="60" y2="45" stroke="white" stroke-width="1.5" opacity="0.4"/></svg></div><div class="course-body"><h3>Batería</h3><p>Ritmo, groove y energía en cada golpe.</p><div class="course-meta"><span class="course-level">Todos los niveles</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
-      <div class="course-card" onclick="goTo('bajo')"><div class="course-img bajo"><svg viewBox="0 0 80 80" fill="none"><rect x="25" y="8" width="30" height="64" rx="8" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><circle cx="40" cy="58" r="6" stroke="white" stroke-width="1.5" fill="none" opacity="0.6"/><line x1="40" y1="8" x2="40" y2="20" stroke="white" stroke-width="2" opacity="0.5"/></svg></div><div class="course-body"><h3>Bajo Eléctrico</h3><p>La base de toda banda. Groove infalible.</p><div class="course-meta"><span class="course-level">Todos los niveles</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
-      <div class="course-card" onclick="goTo('ukelele')"><div class="course-img ukelele"><svg viewBox="0 0 80 80" fill="none"><ellipse cx="40" cy="50" rx="18" ry="22" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><circle cx="40" cy="58" r="4" stroke="white" stroke-width="1.5" fill="none" opacity="0.6"/><rect x="36" y="12" width="8" height="20" rx="2" stroke="white" stroke-width="1.5" fill="none" opacity="0.5"/></svg><span class="course-badge">Ideal niños</span></div><div class="course-body"><h3>Ukulele</h3><p>Pequeño, divertido y perfecto para empezar.</p><div class="course-meta"><span class="course-level">Principiantes</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
-      <div class="course-card" onclick="goTo('voz')"><div class="course-img voz"><svg viewBox="0 0 80 80" fill="none"><path d="M40 12C32 12 26 18 26 26C26 32 30 37 35 39L35 52C35 58 30 62 24 62" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><path d="M40 12C48 12 54 18 54 26C54 32 50 37 45 39L45 52C45 58 50 62 56 62" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><line x1="40" y1="62" x2="40" y2="72" stroke="white" stroke-width="2" opacity="0.5"/><ellipse cx="40" cy="76" rx="10" ry="3" stroke="white" stroke-width="1.5" fill="none" opacity="0.4"/></svg></div><div class="course-body"><h3>Técnica Vocal</h3><p>Encuentra tu voz. Canta con confianza.</p><div class="course-meta"><span class="course-level">Todos los niveles</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
-      <div class="course-card" onclick="goTo('produccion')"><div class="course-img produccion"><svg viewBox="0 0 80 80" fill="none"><rect x="12" y="30" width="56" height="28" rx="3" stroke="white" stroke-width="2" fill="none" opacity="0.8"/><rect x="18" y="36" width="6" height="16" rx="1" fill="white" opacity="0.4"/><rect x="28" y="32" width="6" height="20" rx="1" fill="white" opacity="0.4"/><rect x="38" y="38" width="6" height="14" rx="1" fill="white" opacity="0.4"/><rect x="48" y="34" width="6" height="18" rx="1" fill="white" opacity="0.4"/><rect x="58" y="40" width="6" height="12" rx="1" fill="white" opacity="0.4"/></svg><span class="course-badge">Nuevo</span></div><div class="course-body"><h3>Producción Musical</h3><p>Crea beats y mezcla como un pro.</p><div class="course-meta"><span class="course-level">Intermedio+</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
+      <div class="course-card" onclick="goTo('guitarra')"><div class="course-img guitarra"><img src="https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Guitarra acústica" loading="lazy"><span class="course-badge">Top #1</span></div><div class="course-body"><h3>Guitarra Acústica</h3><p>Desde tu primera canción hasta componer las tuyas.</p><div class="course-meta"><span class="course-level">Desde cero</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
+      <div class="course-card" onclick="goTo('electrica')"><div class="course-img electrica"><img src="https://images.pexels.com/photos/2156327/pexels-photo-2156327.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Guitarra eléctrica" loading="lazy"></div><div class="course-body"><h3>Guitarra Eléctrica</h3><p>Rock, blues, jazz y solos que enamoran.</p><div class="course-meta"><span class="course-level">Todos los niveles</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
+      <div class="course-card" onclick="goTo('piano')"><div class="course-img piano"><img src="https://images.pexels.com/photos/164743/pexels-photo-164743.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Piano" loading="lazy"></div><div class="course-body"><h3>Piano / Teclado</h3><p>Armonía, técnica y canciones que emocionan.</p><div class="course-meta"><span class="course-level">Desde cero</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
+      <div class="course-card" onclick="goTo('bateria')"><div class="course-img bateria"><img src="https://images.pexels.com/photos/1327430/pexels-photo-1327430.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Batería" loading="lazy"></div><div class="course-body"><h3>Batería</h3><p>Ritmo, groove y energía en cada golpe.</p><div class="course-meta"><span class="course-level">Todos los niveles</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
+      <div class="course-card" onclick="goTo('bajo')"><div class="course-img bajo"><img src="https://images.pexels.com/photos/37173826/pexels-photo-37173826.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Bajo eléctrico" loading="lazy"></div><div class="course-body"><h3>Bajo Eléctrico</h3><p>La base de toda banda. Groove infalible.</p><div class="course-meta"><span class="course-level">Todos los niveles</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
+      <div class="course-card" onclick="goTo('ukelele')"><div class="course-img ukelele"><img src="https://images.pexels.com/photos/13025805/pexels-photo-13025805.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Ukelele" loading="lazy"><span class="course-badge">Ideal niños</span></div><div class="course-body"><h3>Ukulele</h3><p>Pequeño, divertido y perfecto para empezar.</p><div class="course-meta"><span class="course-level">Principiantes</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
+      <div class="course-card" onclick="goTo('voz')"><div class="course-img voz"><img src="https://images.pexels.com/photos/164829/pexels-photo-164829.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Técnica vocal" loading="lazy"></div><div class="course-body"><h3>Técnica Vocal</h3><p>Encuentra tu voz. Canta con confianza.</p><div class="course-meta"><span class="course-level">Todos los niveles</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
+      <div class="course-card" onclick="goTo('produccion')"><div class="course-img produccion"><img src="https://images.pexels.com/photos/164938/pexels-photo-164938.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Producción musical" loading="lazy"><span class="course-badge">Nuevo</span></div><div class="course-body"><h3>Producción Musical</h3><p>Crea beats y mezcla como un pro.</p><div class="course-meta"><span class="course-level">Intermedio+</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
     </div>
   </div>
 </div>
@@ -610,41 +691,55 @@
     </div>
     <div class="courses-grid" style="grid-template-columns:1fr;">
       <div class="pricing-home-grid" style="display:grid;grid-template-columns:1fr;gap:20px;">
-        <div class="course-card" style="border:2px solid #C9A227;">
-          <div style="padding:32px 24px;text-align:center;">
-            <div style="width:56px;height:56px;background:rgba(201,162,39,.15);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#C9A227" stroke-width="2" style="width:28px;height:28px;"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <div class="course-card">
+          <div style="padding:24px 20px 20px;text-align:center;display:flex;flex-direction:column;align-items:center;">
+            <div style="width:48px;height:48px;background:rgba(201,162,39,.15);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#C9A227" stroke-width="2" style="width:24px;height:24px;"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
             </div>
-            <h3 style="font-size:22px;font-weight:800;margin-bottom:6px;">Clases Online</h3>
-            <p style="color:#999;font-size:14px;margin-bottom:18px;">Paquete de 4 clases personalizadas</p>
-            <div style="font-size:38px;font-weight:800;color:#1a1a1a;margin-bottom:20px;">$350.000 <span style="font-size:15px;color:#999;font-weight:500;">COP</span></div>
-            <ul style="list-style:none;text-align:left;max-width:320px;margin:0 auto 24px;">
-              <li style="font-size:14px;color:#555;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Clases personalizadas desde cualquier lugar</li>
-              <li style="font-size:14px;color:#555;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Profesor en vivo</li>
-              <li style="font-size:14px;color:#555;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Modalidad virtual por Google Meet</li>
-              <li style="font-size:14px;color:#555;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Material de estudio incluido</li>
-              <li style="font-size:14px;color:#555;padding:8px 0;display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Seguimiento del proceso musical</li>
+            <h3 style="font-size:20px;font-weight:800;margin-bottom:4px;">Clases Online</h3>
+            <p style="color:#999;font-size:13px;margin-bottom:10px;">Paquete de 4 clases personalizadas</p>
+            <div style="font-size:34px;font-weight:800;color:#1a1a1a;margin-bottom:12px;">$350.000 <span style="font-size:14px;color:#999;font-weight:500;">COP</span></div>
+            <ul style="list-style:none;text-align:left;max-width:280px;margin:0 auto 16px;">
+              <li style="font-size:13px;color:#555;padding:6px 0;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Clases personalizadas desde cualquier lugar</li>
+              <li style="font-size:13px;color:#555;padding:6px 0;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Profesor en vivo</li>
+              <li style="font-size:13px;color:#555;padding:6px 0;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Modalidad virtual por Google Meet</li>
+              <li style="font-size:13px;color:#555;padding:6px 0;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Material de estudio incluido</li>
+              <li style="font-size:13px;color:#555;padding:6px 0;display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Seguimiento del proceso musical</li>
             </ul>
             <a href="https://wa.me/573214502161?text=Hola,%20quiero%20información%20sobre%20las%20clases%20online" class="btn-gold" style="display:inline-block;width:100%;max-width:280px;text-align:center;">Reservar clases online</a>
           </div>
         </div>
         <div class="course-card">
-          <div style="padding:32px 24px;text-align:center;">
-            <div style="width:56px;height:56px;background:rgba(107,142,90,.1);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#6B8E5A" stroke-width="2" style="width:28px;height:28px;"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <div style="padding:24px 20px 20px;text-align:center;display:flex;flex-direction:column;align-items:center;">
+            <div style="width:48px;height:48px;background:rgba(107,142,90,.1);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#6B8E5A" stroke-width="2" style="width:24px;height:24px;"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             </div>
-            <h3 style="font-size:22px;font-weight:800;margin-bottom:6px;">Clases Presenciales</h3>
-            <p style="color:#999;font-size:14px;margin-bottom:18px;">Paquete de clases presenciales a domicilio</p>
-            <div style="font-size:38px;font-weight:800;color:#1a1a1a;margin-bottom:20px;">$380.000 <span style="font-size:15px;color:#999;font-weight:500;">COP</span></div>
-            <ul style="list-style:none;text-align:left;max-width:320px;margin:0 auto 24px;">
-              <li style="font-size:14px;color:#555;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Clases personalizadas a domicilio</li>
-              <li style="font-size:14px;color:#555;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>En la comodidad del hogar del estudiante</li>
-              <li style="font-size:14px;color:#555;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Disponible en: El Poblado</li>
-              <li style="font-size:14px;color:#555;padding:8px 0;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Disponible en: Envigado</li>
-              <li style="font-size:14px;color:#555;padding:8px 0;display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Disponible en: Sabaneta</li>
+            <h3 style="font-size:20px;font-weight:800;margin-bottom:4px;">Clases Presenciales</h3>
+            <p style="color:#999;font-size:13px;margin-bottom:10px;">Paquete de clases presenciales a domicilio</p>
+            <div style="font-size:34px;font-weight:800;color:#1a1a1a;margin-bottom:12px;">$380.000 <span style="font-size:14px;color:#999;font-weight:500;">COP</span></div>
+            <ul style="list-style:none;text-align:left;max-width:280px;margin:0 auto 16px;">
+              <li style="font-size:13px;color:#555;padding:6px 0;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Clases personalizadas a domicilio</li>
+              <li style="font-size:13px;color:#555;padding:6px 0;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>En la comodidad del hogar del estudiante</li>
+              <li style="font-size:13px;color:#555;padding:6px 0;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Disponible en: El Poblado</li>
+              <li style="font-size:13px;color:#555;padding:6px 0;border-bottom:1px solid rgba(0,0,0,.04);display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Disponible en: Envigado</li>
+              <li style="font-size:13px;color:#555;padding:6px 0;display:flex;align-items:center;gap:8px;"><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5" style="width:16px;height:16px;flex-shrink:0;"><polyline points="20 6 9 17 4 12"/></svg>Disponible en: Sabaneta</li>
             </ul>
-            <a href="https://wa.me/573214502161?text=Hola,%20quiero%20información%20sobre%20las%20clases%20presenciales" class="btn-gold" style="display:inline-block;width:100%;max-width:280px;text-align:center;background:#1a1a1a;color:#fff;">Reservar clases presenciales</a>
+            <a href="https://wa.me/573214502161?text=Hola,%20quiero%20información%20sobre%20las%20clases%20presenciales" class="btn-gold" style="display:inline-block;width:100%;max-width:280px;text-align:center;">Reservar clases presenciales</a>
           </div>
+        </div>
+        <div class="course-card">
+          <div style="padding:24px 20px 20px;text-align:center;display:flex;flex-direction:column;align-items:center;">
+            <div style="width:48px;height:48px;background:rgba(201,162,39,.15);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#C9A227" stroke-width="2" style="width:24px;height:24px;"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            </div>
+            <h3 style="font-size:20px;font-weight:800;margin-bottom:4px;">Pago Internacional</h3>
+            <div id="paypal-container-NF58M9EJD2T3G" style="max-width:260px;width:100%;margin:0 auto;zoom:0.88;"></div>
+          </div>
+          <script>
+            paypal.HostedButtons({
+              hostedButtonId: "NF58M9EJD2T3G",
+            }).render("#paypal-container-NF58M9EJD2T3G")
+          </script>
         </div>
       </div>
     </div>
@@ -965,7 +1060,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A domicilio en tu hogar</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>El Poblado, Envigado, Sabaneta</li>
         </ul>
-        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Guitarra%20Acústica" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Guitarra%20Acústica" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar presencial</a>
       </div>
     </div>
   </div>
@@ -1052,7 +1147,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A domicilio en tu hogar</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>El Poblado, Envigado, Sabaneta</li>
         </ul>
-        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Guitarra%20Eléctrica" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Guitarra%20Eléctrica" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar presencial</a>
       </div>
     </div>
   </div>
@@ -1139,7 +1234,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A domicilio en tu hogar</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>El Poblado, Envigado, Sabaneta</li>
         </ul>
-        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Piano" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Piano" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar presencial</a>
       </div>
     </div>
   </div>
@@ -1226,7 +1321,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A domicilio en tu hogar</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>El Poblado, Envigado, Sabaneta</li>
         </ul>
-        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Batería" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Batería" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar presencial</a>
       </div>
     </div>
   </div>
@@ -1313,7 +1408,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A domicilio en tu hogar</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>El Poblado, Envigado, Sabaneta</li>
         </ul>
-        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Bajo%20Eléctrico" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Bajo%20Eléctrico" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar presencial</a>
       </div>
     </div>
   </div>
@@ -1400,7 +1495,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A domicilio en tu hogar</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>El Poblado, Envigado, Sabaneta</li>
         </ul>
-        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Ukulele" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Ukulele" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar presencial</a>
       </div>
     </div>
   </div>
@@ -1487,7 +1582,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>A domicilio en tu hogar</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>El Poblado, Envigado, Sabaneta</li>
         </ul>
-        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Técnica%20Vocal" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Técnica%20Vocal" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar presencial</a>
       </div>
     </div>
   </div>
@@ -1574,7 +1669,7 @@
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>En tu hogar o estudio</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>El Poblado, Envigado, Sabaneta</li>
         </ul>
-        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Producción%20Musical" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;background:#1a1a1a;color:#fff;" target="_blank" rel="noopener">Reservar presencial</a>
+        <a href="https://wa.me/573214502161?text=Hola,%20quiero%20reservar%20el%20paquete%20de%204%20clases%20presenciales%20de%20Producción%20Musical" class="btn-gold" style="display:block;width:100%;text-align:center;margin:0;" target="_blank" rel="noopener">Reservar presencial</a>
       </div>
     </div>
   </div>
