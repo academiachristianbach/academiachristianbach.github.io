@@ -84,7 +84,7 @@
   .course-arrow{width:30px;height:30px;border-radius:50%;background:#F8F7F4;display:flex;align-items:center;justify-content:center}
 
   .why{background:linear-gradient(135deg,#111111 0%,#1C1C1C 100%);color:#fff}
-  .why .section-title{color:#fff}.why .section-desc{color:rgba(255,255,255,.5)}
+  .why .section-tag{color:#fff}.why .section-title{color:#fff}.why .section-desc{color:rgba(255,255,255,.5)}
   .why-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:26px 18px;text-align:center;margin-bottom:14px}
   .why-icon{width:48px;height:48px;background:rgba(201,162,39,.15);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
   .why-icon svg{width:24px;height:24px}
@@ -546,6 +546,39 @@
       transform:none !important;
       margin-top:16px !important;
       position:static !important;
+    }
+
+    /* PayPal: mantener la tarjeta y el componente contenidos y centrados en móvil */
+    .pricing-home-grid .course-card:nth-child(3){
+      min-width:0 !important;
+      width:100% !important;
+      overflow:hidden !important;
+    }
+    .pricing-home-grid .course-card:nth-child(3) > div{
+      min-width:0 !important;
+      width:100% !important;
+    }
+    .pricing-home-grid .course-card:nth-child(3) #paypal-container-NF58M9EJD2T3G{
+      width:100% !important;
+      max-width:260px !important;
+      min-width:0 !important;
+      margin-left:auto !important;
+      margin-right:auto !important;
+      align-self:center !important;
+      overflow:hidden !important;
+    }
+    .pricing-home-grid .course-card:nth-child(3) #paypal-container-NF58M9EJD2T3G > div{
+      width:100% !important;
+      max-width:100% !important;
+      margin-left:auto !important;
+      margin-right:auto !important;
+    }
+
+    /* Mantener visibles en móvil las mismas flechas de las tarjetas */
+    .course-arrow{
+      display:flex !important;
+      visibility:visible !important;
+      opacity:1 !important;
     }
   }
 
