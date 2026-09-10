@@ -548,15 +548,25 @@
       position:static !important;
     }
 
-    /* PayPal: mantener la tarjeta y el componente contenidos y centrados en móvil */
-    .pricing-home-grid .course-card:nth-child(3){
-      min-width:0 !important;
+    /* PayPal: misma tarjeta, mismo ancho y contenido centrado en móvil */
+    .pricing-home-grid{
       width:100% !important;
+      max-width:100% !important;
+      min-width:0 !important;
+      overflow:visible !important;
+    }
+    .pricing-home-grid .course-card:nth-child(3){
+      width:100% !important;
+      max-width:100% !important;
+      min-width:0 !important;
+      box-sizing:border-box !important;
       overflow:hidden !important;
     }
     .pricing-home-grid .course-card:nth-child(3) > div{
-      min-width:0 !important;
       width:100% !important;
+      max-width:100% !important;
+      min-width:0 !important;
+      box-sizing:border-box !important;
     }
     .pricing-home-grid .course-card:nth-child(3) #paypal-container-NF58M9EJD2T3G{
       width:100% !important;
@@ -565,13 +575,22 @@
       margin-left:auto !important;
       margin-right:auto !important;
       align-self:center !important;
+      box-sizing:border-box !important;
       overflow:hidden !important;
+      display:flex !important;
+      flex-direction:column !important;
+      align-items:center !important;
+      justify-content:center !important;
     }
-    .pricing-home-grid .course-card:nth-child(3) #paypal-container-NF58M9EJD2T3G > div{
+    .pricing-home-grid .course-card:nth-child(3) #paypal-container-NF58M9EJD2T3G > div,
+    .pricing-home-grid .course-card:nth-child(3) #paypal-container-NF58M9EJD2T3G .paypal-buttons,
+    .pricing-home-grid .course-card:nth-child(3) #paypal-container-NF58M9EJD2T3G iframe{
       width:100% !important;
       max-width:100% !important;
+      min-width:0 !important;
       margin-left:auto !important;
       margin-right:auto !important;
+      box-sizing:border-box !important;
     }
 
     /* Mantener visibles en móvil las mismas flechas de las tarjetas */
