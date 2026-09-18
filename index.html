@@ -378,20 +378,32 @@
     .inst-hero h1{font-size:clamp(24px,7vw,36px)}
     .inst-hero svg{width:56px;height:56px}
 
-    /* ===== CORRECCIONES MÓVIL: PAYPAL Y ANCHO ===== */
-    html,body{overflow-x:hidden;max-width:100vw}
-    .section,.container,.courses-grid,.pricing-home-grid,.course-card{max-width:100%;min-width:0}
-    #paypal-container-NF58M9EJD2T3G{max-width:100%!important;width:100%!important;min-width:0!important;overflow:hidden!important;box-sizing:border-box!important}
-    #paypal-container-NF58M9EJD2T3G > div,
-    #paypal-container-NF58M9EJD2T3G iframe,
-    #paypal-container-NF58M9EJD2T3G [class*="paypal"],
-    #paypal-container-NF58M9EJD2T3G div{max-width:100%!important;min-width:0!important;box-sizing:border-box!important}
-    #paypal-container-NF58M9EJD2T3G iframe{width:100%!important;max-width:100%!important}
-
-    /* Flechas del carrusel: visibles y funcionales en móvil */
-    .carousel-btn{display:flex!important;visibility:visible!important;opacity:1!important;z-index:20}
-    .carousel-prev{left:4px!important}
-    .carousel-next{right:4px!important}
+    /* ===== CORRECCIÓN MÓVIL: eliminar expansión/elevación al tocar ===== */
+    .course-card:hover,.course-card:active,
+    .review-card:hover,.review-card:active,
+    .why-card:hover,.why-card:active,
+    .method-card:hover,.method-card:active,
+    .forwho-card:hover,.forwho-card:active,
+    .skill-item:hover,.skill-item:active,
+    .pricing-card:hover,.pricing-card:active,
+    .feature:hover .feature-icon,
+    .btn-gold:hover,.btn-gold:active,
+    .btn-outline:hover,.btn-outline:active,
+    .form-submit:hover,.form-submit:active,
+    .nav-cta:hover,.nav-cta:active,
+    .footer-social a:hover,.footer-social a:active,
+    a.contact-item:hover,a.contact-item:active,
+    .contact-item:hover,.contact-item:active,
+    .carousel-btn:hover,.carousel-btn:active,
+    .pricing-home-grid .course-card .btn-gold:hover,
+    .pricing-grid .pricing-card .btn-gold:hover{
+      transform:none !important;
+      box-shadow:none !important;
+    }
+    .why-card:hover,.why-card:active{background:rgba(255,255,255,.06) !important}
+    .course-card:hover,.course-card:active{box-shadow:0 2px 12px rgba(0,0,0,.04) !important}
+    .btn-gold:hover,.btn-gold:active{box-shadow:0 4px 15px rgba(201,162,39,.3) !important}
+    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{box-shadow:0 0 0 3px rgba(201,162,39,.15) !important}
   }
 
   @media(max-width:400px){
@@ -800,7 +812,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="#C9A227" stroke-width="2" style="width:24px;height:24px;"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
             </div>
             <h3 style="font-size:20px;font-weight:800;margin-bottom:4px;">Pago Internacional</h3>
-            <div id="paypal-container-NF58M9EJD2T3G" style="max-width:260px;width:100%;margin:0 auto;"></div>
+            <div id="paypal-container-NF58M9EJD2T3G" style="max-width:260px;width:100%;margin:0 auto;zoom:0.88;"></div>
           </div>
           <script>
             paypal.HostedButtons({
