@@ -84,7 +84,7 @@
   .course-arrow{width:30px;height:30px;border-radius:50%;background:#F8F7F4;display:flex;align-items:center;justify-content:center}
 
   .why{background:linear-gradient(135deg,#111111 0%,#1C1C1C 100%);color:#fff}
-  .why .section-tag{color:#fff}.why .section-title{color:#fff}.why .section-desc{color:rgba(255,255,255,.5)}
+  .why .section-title{color:#fff}.why .section-desc{color:rgba(255,255,255,.5)}
   .why-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:26px 18px;text-align:center;margin-bottom:14px}
   .why-icon{width:48px;height:48px;background:rgba(201,162,39,.15);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
   .why-icon svg{width:24px;height:24px}
@@ -377,33 +377,6 @@
     .inst-hero{padding:75px 16px 35px}
     .inst-hero h1{font-size:clamp(24px,7vw,36px)}
     .inst-hero svg{width:56px;height:56px}
-
-    /* ===== CORRECCIÓN MÓVIL: eliminar expansión/elevación al tocar ===== */
-    .course-card:hover,.course-card:active,
-    .review-card:hover,.review-card:active,
-    .why-card:hover,.why-card:active,
-    .method-card:hover,.method-card:active,
-    .forwho-card:hover,.forwho-card:active,
-    .skill-item:hover,.skill-item:active,
-    .pricing-card:hover,.pricing-card:active,
-    .feature:hover .feature-icon,
-    .btn-gold:hover,.btn-gold:active,
-    .btn-outline:hover,.btn-outline:active,
-    .form-submit:hover,.form-submit:active,
-    .nav-cta:hover,.nav-cta:active,
-    .footer-social a:hover,.footer-social a:active,
-    a.contact-item:hover,a.contact-item:active,
-    .contact-item:hover,.contact-item:active,
-    .carousel-btn:hover,.carousel-btn:active,
-    .pricing-home-grid .course-card .btn-gold:hover,
-    .pricing-grid .pricing-card .btn-gold:hover{
-      transform:none !important;
-      box-shadow:none !important;
-    }
-    .why-card:hover,.why-card:active{background:rgba(255,255,255,.06) !important}
-    .course-card:hover,.course-card:active{box-shadow:0 2px 12px rgba(0,0,0,.04) !important}
-    .btn-gold:hover,.btn-gold:active{box-shadow:0 4px 15px rgba(201,162,39,.3) !important}
-    .form-group input:focus,.form-group select:focus,.form-group textarea:focus{box-shadow:0 0 0 3px rgba(201,162,39,.15) !important}
   }
 
   @media(max-width:400px){
@@ -573,58 +546,6 @@
       transform:none !important;
       margin-top:16px !important;
       position:static !important;
-    }
-
-    /* PayPal: misma tarjeta, mismo ancho y contenido centrado en móvil */
-    .pricing-home-grid{
-      width:100% !important;
-      max-width:100% !important;
-      min-width:0 !important;
-      overflow:visible !important;
-    }
-    .pricing-home-grid .course-card:nth-child(3){
-      width:100% !important;
-      max-width:100% !important;
-      min-width:0 !important;
-      box-sizing:border-box !important;
-      overflow:hidden !important;
-    }
-    .pricing-home-grid .course-card:nth-child(3) > div{
-      width:100% !important;
-      max-width:100% !important;
-      min-width:0 !important;
-      box-sizing:border-box !important;
-    }
-    .pricing-home-grid .course-card:nth-child(3) #paypal-container-NF58M9EJD2T3G{
-      width:100% !important;
-      max-width:260px !important;
-      min-width:0 !important;
-      margin-left:auto !important;
-      margin-right:auto !important;
-      align-self:center !important;
-      box-sizing:border-box !important;
-      overflow:hidden !important;
-      display:flex !important;
-      flex-direction:column !important;
-      align-items:center !important;
-      justify-content:center !important;
-    }
-    .pricing-home-grid .course-card:nth-child(3) #paypal-container-NF58M9EJD2T3G > div,
-    .pricing-home-grid .course-card:nth-child(3) #paypal-container-NF58M9EJD2T3G .paypal-buttons,
-    .pricing-home-grid .course-card:nth-child(3) #paypal-container-NF58M9EJD2T3G iframe{
-      width:100% !important;
-      max-width:100% !important;
-      min-width:0 !important;
-      margin-left:auto !important;
-      margin-right:auto !important;
-      box-sizing:border-box !important;
-    }
-
-    /* Mantener visibles en móvil las mismas flechas de las tarjetas */
-    .course-arrow{
-      display:flex !important;
-      visibility:visible !important;
-      opacity:1 !important;
     }
   }
 
