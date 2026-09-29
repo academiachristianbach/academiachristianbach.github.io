@@ -549,6 +549,47 @@
     }
   }
 
+
+  /* ===== CORRECCIÓN QUIRÚRGICA: TARJETA PAYPAL MÓVIL ===== */
+  /* 1. Evitar que el hover/active de la tarjeta PayPal la expanda en táctiles */
+  .pricing-home-grid .course-card:nth-child(3):hover,
+  .pricing-home-grid .course-card:nth-child(3):active{
+    transform:none !important;
+    box-shadow:0 2px 12px rgba(0,0,0,.04) !important;
+  }
+
+  /* 2. Estabilizar el contenedor de PayPal: quitar zoom problemático y forzar centrado */
+  #paypal-container-NF58M9EJD2T3G{
+    zoom:1 !important;
+    transform:none !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+    display:block !important;
+    width:100% !important;
+    max-width:260px !important;
+  }
+
+  /* 3. En móvil: anular cualquier transformación heredada y mantener tamaño fijo */
+  @media(max-width:767px){
+    .pricing-home-grid .course-card:nth-child(3){
+      transform:none !important;
+      height:auto !important;
+      min-height:0 !important;
+    }
+    .pricing-home-grid .course-card:nth-child(3) > div{
+      transform:none !important;
+      width:100% !important;
+    }
+    #paypal-container-NF58M9EJD2T3G{
+      margin-top:16px !important;
+      margin-left:auto !important;
+      margin-right:auto !important;
+      float:none !important;
+      position:static !important;
+      left:auto !important;
+      top:auto !important;
+    }
+  }
 </style>
 <script 
   src="https://www.paypal.com/sdk/js?client-id=BAA2fCCS78YpjBAEo8o6kACMQqmVOl7X7ijWPwhu5tGwEsRQd0fPAms0qWvXBDhPpkXSizdv1tjVIJacWo&components=hosted-buttons&disable-funding=venmo&currency=USD">
