@@ -590,6 +590,165 @@
       top:auto !important;
     }
   }
+
+  /* ============================================================
+     CORRECCIÓN DEFINITIVA SAFARI IPHONE
+     ============================================================ */
+
+  /* ---------- PROBLEMA 1: Tarjetas blancas se agrandan ---------- */
+  /* Safari iPhone mantiene el estado :hover después de volver de otra app */
+  /* Desactivar TODOS los efectos hover/transform en dispositivos táctiles */
+
+  @media (hover: none) and (pointer: coarse) {
+
+    /* TARJETAS - Reset completo de todos los estados */
+    .course-card,
+    .course-card:hover,
+    .course-card:active,
+    .course-card:focus,
+    .course-card:focus-visible,
+    .why-card,
+    .why-card:hover,
+    .why-card:active,
+    .why-card:focus,
+    .method-card,
+    .method-card:hover,
+    .method-card:active,
+    .method-card:focus,
+    .forwho-card,
+    .forwho-card:hover,
+    .forwho-card:active,
+    .forwho-card:focus,
+    .skill-item,
+    .skill-item:hover,
+    .skill-item:active,
+    .skill-item:focus,
+    .review-card,
+    .review-card:hover,
+    .review-card:active,
+    .review-card:focus,
+    .pricing-card,
+    .pricing-card:hover,
+    .pricing-card:active,
+    .pricing-card:focus {
+      -webkit-transform: none !important;
+      transform: none !important;
+      -webkit-transition: none !important;
+      transition: none !important;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04) !important;
+    }
+
+    /* BOTONES - Reset completo */
+    .btn-gold,
+    .btn-gold:hover,
+    .btn-gold:active,
+    .btn-gold:focus,
+    .btn-outline,
+    .btn-outline:hover,
+    .btn-outline:active,
+    .btn-outline:focus,
+    .form-submit,
+    .form-submit:hover,
+    .form-submit:active,
+    .form-submit:focus,
+    .nav-cta,
+    .nav-cta:hover,
+    .nav-cta:active,
+    .nav-cta:focus {
+      -webkit-transform: none !important;
+      transform: none !important;
+      -webkit-transition: none !important;
+      transition: none !important;
+    }
+
+    /* ELEMENTOS INTERNOS - Reset */
+    .feature:hover .feature-icon,
+    .feature:active .feature-icon,
+    .course-card:hover .course-arrow,
+    .course-card:active .course-arrow,
+    .footer-social a:hover,
+    .footer-social a:active,
+    .contact-item:hover,
+    .contact-item:active,
+    .carousel-btn:hover,
+    .carousel-btn:active {
+      -webkit-transform: none !important;
+      transform: none !important;
+    }
+
+    /* Restaurar colores normales de flecha */
+    .course-card:hover .course-arrow,
+    .course-card:active .course-arrow {
+      background: #E8E6E1 !important;
+    }
+    .course-card:hover .course-arrow svg,
+    .course-card:active .course-arrow svg {
+      stroke: #666 !important;
+    }
+  }
+
+  /* ---------- PROBLEMA 2: Flechas de instrumentos invisibles ---------- */
+  /* La flecha existe pero es invisible por falta de contraste en móvil */
+  /* Forzar visibilidad con colores contrastantes */
+
+  @media (hover: none) and (pointer: coarse) {
+    .course-arrow {
+      display: -webkit-flex !important;
+      display: flex !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      width: 30px !important;
+      height: 30px !important;
+      min-width: 30px !important;
+      min-height: 30px !important;
+      background: #E8E6E1 !important;
+      border-radius: 50% !important;
+      -webkit-border-radius: 50% !important;
+      -webkit-align-items: center !important;
+      align-items: center !important;
+      -webkit-justify-content: center !important;
+      justify-content: center !important;
+      -webkit-flex-shrink: 0 !important;
+      flex-shrink: 0 !important;
+      overflow: visible !important;
+    }
+
+    .course-arrow svg {
+      display: block !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      width: 16px !important;
+      height: 16px !important;
+      stroke: #666 !important;
+      -webkit-transform: none !important;
+      transform: none !important;
+    }
+  }
+
+  /* Refuerzo adicional para pantallas pequeñas */
+  @media (max-width: 767px) {
+    .course-arrow {
+      display: -webkit-flex !important;
+      display: flex !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      width: 30px !important;
+      height: 30px !important;
+      background: #E8E6E1 !important;
+      -webkit-align-items: center !important;
+      align-items: center !important;
+      -webkit-justify-content: center !important;
+      justify-content: center !important;
+      -webkit-flex-shrink: 0 !important;
+      flex-shrink: 0 !important;
+    }
+    .course-arrow svg {
+      display: block !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      stroke: #666 !important;
+    }
+  }
 </style>
 <script 
   src="https://www.paypal.com/sdk/js?client-id=BAA2fCCS78YpjBAEo8o6kACMQqmVOl7X7ijWPwhu5tGwEsRQd0fPAms0qWvXBDhPpkXSizdv1tjVIJacWo&components=hosted-buttons&disable-funding=venmo&currency=USD">
