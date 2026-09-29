@@ -749,6 +749,86 @@
       stroke: #666 !important;
     }
   }
+
+  /* ============================================================
+     FIX ESPECÍFICO: TARJETAS CLASES ONLINE / PRESENCIALES (HOME)
+     Estabilidad total de tamaño en táctiles + ajuste base móvil
+     ============================================================ */
+
+  /* --- Táctiles: congelar tamaño y eliminar todo cambio de estado --- */
+  @media (hover: none) and (pointer: coarse) {
+    .pricing-home-grid .course-card,
+    .pricing-home-grid .course-card:hover,
+    .pricing-home-grid .course-card:active,
+    .pricing-home-grid .course-card:focus,
+    .pricing-home-grid .course-card:focus-visible {
+      -webkit-transform: none !important;
+      transform: none !important;
+      -webkit-transition: none !important;
+      transition: none !important;
+      -webkit-animation: none !important;
+      animation: none !important;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04) !important;
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      min-height: 0 !important;
+    }
+    /* Contenedor interno también congelado */
+    .pricing-home-grid .course-card > div {
+      -webkit-transform: none !important;
+      transform: none !important;
+      -webkit-transition: none !important;
+      transition: none !important;
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+    /* Botón dorado sin transformación */
+    .pricing-home-grid .course-card .btn-gold,
+    .pricing-home-grid .course-card .btn-gold:hover,
+    .pricing-home-grid .course-card .btn-gold:active {
+      -webkit-transform: none !important;
+      transform: none !important;
+      -webkit-transition: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* --- Ajuste de tamaño base móvil (solo estas dos tarjetas) --- */
+  @media (max-width: 767px) {
+    .pricing-home-grid .course-card > div {
+      padding: 20px 16px 18px !important;
+    }
+    .pricing-home-grid .course-card h3 {
+      font-size: 18px !important;
+    }
+    .pricing-home-grid .course-card .btn-gold {
+      max-width: 100% !important;
+      padding: 12px 16px !important;
+      font-size: 14px !important;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .pricing-home-grid .course-card > div {
+      padding: 18px 14px 16px !important;
+    }
+    .pricing-home-grid .course-card h3 {
+      font-size: 17px !important;
+    }
+  }
+
+  /* --- Escritorio: hover se mantiene intacto (sin cambios) --- */
+  @media (hover: hover) and (pointer: fine) {
+    .pricing-home-grid .course-card {
+      transition: all .3s cubic-bezier(.4,0,.2,1);
+    }
+    .pricing-home-grid .course-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 45px rgba(0,0,0,.12);
+    }
+  }
+
 </style>
 <script 
   src="https://www.paypal.com/sdk/js?client-id=BAA2fCCS78YpjBAEo8o6kACMQqmVOl7X7ijWPwhu5tGwEsRQd0fPAms0qWvXBDhPpkXSizdv1tjVIJacWo&components=hosted-buttons&disable-funding=venmo&currency=USD">
