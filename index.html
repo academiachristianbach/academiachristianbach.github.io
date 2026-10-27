@@ -91,6 +91,9 @@
   .why-card h3{font-size:16px;font-weight:700;margin-bottom:5px}
   .why-card p{font-size:13px;color:rgba(255,255,255,.55)}
 
+  /* Ajuste para scroll con header fijo */
+  #instrumentos{scroll-margin-top:70px}
+
   /* ===== SECCIÓN RESEÑAS GOOGLE ===== */
   .reviews{background:#fff;padding:70px 20px}
   .reviews-header{text-align:center;margin-bottom:42px}
@@ -840,6 +843,147 @@
     .carousel-next{right:10px}
   }
 
+
+  /* ============================================================
+     SISTEMA DE NAVEGACIÓN UNIFICADO
+     Logo + Volver + Reservar comparten el mismo lenguaje visual:
+     mismo radio, mismo grosor de borde, misma altura, mismas
+     transiciones suaves. Estética minimalista y sobria.
+     ============================================================ */
+
+  /* ---- Base compartida ---- */
+  .nav-logo,.nav-cta{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    height:40px;
+    border-radius:14px;
+    border:1.5px solid #D8D5CF;
+    font-family:inherit;
+    cursor:pointer;
+    -webkit-appearance:none;
+    -webkit-tap-highlight-color:transparent;
+    transition:background-color .25s ease,border-color .25s ease,box-shadow .25s ease,transform .25s ease,color .25s ease;
+  }
+
+  /* ---- Volver: oculto por defecto, solo visible en páginas de instrumentos ---- */
+  .nav-back{
+    display:none;
+    align-items:center;
+    justify-content:center;
+    height:40px;
+    border-radius:14px;
+    border:1.5px solid #D8D5CF;
+    font-family:inherit;
+    cursor:pointer;
+    -webkit-appearance:none;
+    -webkit-tap-highlight-color:transparent;
+    transition:background-color .25s ease,border-color .25s ease,box-shadow .25s ease,transform .25s ease,color .25s ease;
+  }
+
+  /* ---- Academia Christian Bach (logo + nombre, único enlace) ---- */
+  .nav-logo{
+    gap:8px;
+    min-width:0;
+    flex-shrink:1;
+    padding:0 14px 0 8px;
+    background:#E5E5E5;
+    border-color:#D8D5CF;
+    color:#1a1a1a;
+    text-decoration:none;
+  }
+  .nav-logo img{
+    display:block;
+    width:26px;
+    height:26px;
+    object-fit:contain;
+    flex-shrink:0;
+    background:transparent;
+    border-radius:6px;
+  }
+  .nav-logo span{
+    font-size:13.5px;
+    font-weight:700;
+    letter-spacing:.1px;
+    white-space:nowrap;
+    color:#1a1a1a;
+  }
+  .nav-logo:focus-visible{outline:2px solid #C9A227;outline-offset:2px}
+
+  /* ---- Volver ---- */
+  .nav-back{
+    gap:6px;
+    padding:0 14px;
+    background:#F8F7F4;
+    border-color:#D8D5CF;
+    color:#1a1a1a;
+    font-size:13px;
+    font-weight:600;
+    line-height:1;
+    white-space:nowrap;
+  }
+  .nav-back svg{width:15px;height:15px;flex-shrink:0;stroke:currentColor}
+  .nav-back:focus-visible{outline:2px solid #C9A227;outline-offset:2px}
+
+  /* ---- Reservar ---- */
+  .nav-cta{
+    padding:0 16px;
+    background:#1a1a1a;
+    border-color:#1a1a1a;
+    color:#fff;
+    font-size:13px;
+    font-weight:700;
+    line-height:1;
+    white-space:nowrap;
+  }
+  .nav-cta:focus-visible{outline:2px solid #C9A227;outline-offset:2px}
+
+  /* ---- Hover elegante (solo puntero fino) ---- */
+  @media(hover:hover) and (pointer:fine){
+    .nav-logo:hover{
+      background:#DEDEDE;
+      border-color:#C4C1BA;
+      box-shadow:0 3px 10px rgba(0,0,0,.08);
+      transform:translateY(-1px);
+    }
+    .nav-back:hover{
+      background:#FFFFFF;
+      border-color:#C4C1BA;
+      box-shadow:0 3px 10px rgba(0,0,0,.08);
+      transform:translateY(-1px);
+    }
+    .nav-cta:hover{
+      background:#2A2A2A;
+      border-color:#2A2A2A;
+      box-shadow:0 4px 14px rgba(0,0,0,.22);
+      transform:translateY(-1px);
+    }
+  }
+  .nav-logo:active,.nav-back:active,.nav-cta:active{
+    transform:translateY(0);
+    box-shadow:none;
+  }
+
+  /* ---- Responsive: misma familia, mismas proporciones ---- */
+  @media(max-width:767px){
+    .nav-logo,.nav-back,.nav-cta{height:36px;border-radius:12px}
+    .nav-logo{gap:7px;padding:0 12px 0 7px}
+    .nav-logo img{width:23px;height:23px}
+    .nav-logo span{font-size:12.5px}
+    .nav-back{gap:5px;padding:0 12px;font-size:12px}
+    .nav-back svg{width:14px;height:14px}
+    .nav-cta{padding:0 13px;font-size:12px}
+  }
+  @media(max-width:400px){
+    .nav-logo,.nav-back,.nav-cta{height:34px;border-radius:11px}
+    .nav-logo{gap:5px;padding:0 10px 0 6px}
+    .nav-logo img{width:20px;height:20px}
+    .nav-logo span{font-size:11px;letter-spacing:-.2px}
+    .nav-back{gap:4px;padding:0 10px;font-size:11px}
+    .nav-back svg{width:12px;height:12px}
+    .nav-cta{padding:0 11px;font-size:11px}
+  }
+
 </style>
 <script 
   src="https://www.paypal.com/sdk/js?client-id=BAA2fCCS78YpjBAEo8o6kACMQqmVOl7X7ijWPwhu5tGwEsRQd0fPAms0qWvXBDhPpkXSizdv1tjVIJacWo&components=hosted-buttons&disable-funding=venmo&currency=USD">
@@ -850,15 +994,17 @@
 <!-- NAV -->
 <div class="nav">
   <div class="nav-inner">
-    <div class="nav-logo" onclick="goHome()">
-      <svg viewBox="0 0 100 100" fill="none"><path d="M50 5C50 5 30 25 30 45C30 55 38 62 50 62C62 62 70 55 70 45C70 35 60 25 50 5Z" stroke="#C9A227" stroke-width="2.5" fill="none"/><path d="M50 62C50 62 35 72 35 85C35 92 42 95 50 95C58 95 65 92 65 85C65 75 55 68 50 62Z" stroke="#C9A227" stroke-width="2.5" fill="none"/><circle cx="50" cy="85" r="4" fill="#C9A227"/></svg>
+    <a class="nav-logo" href="https://academiachristianbach.github.io/" aria-label="Academia Christian Bach, ir a la página principal">
+      <img src="images/logo-academia-christian-bach.png" alt="Logo Academia Christian Bach">
       <span>Academia Christian Bach</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <button class="nav-back" id="navBack" onclick="goCourses()" aria-label="Volver a la sección de instrumentos">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Volver
+      </button>
+      <button class="nav-cta" onclick="goContact()">Reservar</button>
     </div>
-    <button class="nav-back" id="navBack" onclick="goHome()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-      Volver
-    </button>
-    <button class="nav-cta" onclick="goContact()">Reserva</button>
   </div>
 </div>
 
@@ -948,7 +1094,7 @@
       <h2 class="section-title">¿Qué quieres tocar?</h2>
       <p class="section-desc">Ocho caminos para encontrar tu sonido. Toca la tarjeta para conocer la metodología.</p>
     </div>
-    <div class="courses-grid">
+    <div class="courses-grid" id="instrumentos">
       <div class="course-card" onclick="goTo('guitarra')"><div class="course-img guitarra"><img src="https://images.pexels.com/photos/1407322/pexels-photo-1407322.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Guitarra acústica" loading="lazy"><span class="course-badge">Top #1</span></div><div class="course-body"><h3>Guitarra Acústica</h3><p>Desde tu primera canción hasta componer las tuyas.</p><div class="course-meta"><span class="course-level">Desde cero</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
       <div class="course-card" onclick="goTo('electrica')"><div class="course-img electrica"><img src="https://images.pexels.com/photos/39967221/pexels-photo-39967221.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Guitarra eléctrica" loading="lazy"></div><div class="course-body"><h3>Guitarra Eléctrica</h3><p>Rock, blues, jazz y solos que enamoran.</p><div class="course-meta"><span class="course-level">Todos los niveles</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
       <div class="course-card" onclick="goTo('piano')"><div class="course-img piano"><img src="https://images.pexels.com/photos/12956083/pexels-photo-12956083.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Piano" loading="lazy"></div><div class="course-body"><h3>Piano / Teclado</h3><p>Armonía, técnica y canciones que emocionan.</p><div class="course-meta"><span class="course-level">Desde cero</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
@@ -1986,6 +2132,17 @@ function goTo(inst){
   document.getElementById('navBack').style.display='flex';
   window.scrollTo({top:0,behavior:'smooth'});
 }
+function goCourses(){
+  goHome();
+  setTimeout(function(){
+    var el=document.getElementById('instrumentos');
+    if(el){
+      var navHeight = document.querySelector('.nav').offsetHeight;
+      var top = el.getBoundingClientRect().top + window.pageYOffset - navHeight - 12;
+      window.scrollTo({top: top, behavior: 'smooth'});
+    }
+  },400);
+}
 function goContact(){
   goHome();
   setTimeout(function(){
@@ -1993,6 +2150,16 @@ function goContact(){
     if(el)el.scrollIntoView({behavior:'smooth'});
   },350);
 }
+
+/* Si se entra a la página con el hash #instrumentos, ir directo a las tarjetas */
+window.addEventListener('load',function(){
+  if(window.location.hash==='#instrumentos'){
+    setTimeout(function(){
+      var el=document.getElementById('instrumentos');
+      if(el)el.scrollIntoView({behavior:'smooth',block:'start'});
+    },400);
+  }
+});
 
 /* ===== CARRUSEL RESEÑAS CONTINUO INFINITO ===== */
 (function(){
