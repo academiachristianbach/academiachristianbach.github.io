@@ -84,12 +84,12 @@
   .course-arrow{width:30px;height:30px;border-radius:50%;background:#F8F7F4;display:flex;align-items:center;justify-content:center}
 
   .why{background:linear-gradient(135deg,#111111 0%,#1C1C1C 100%);color:#fff}
-  .why .section-title{color:#fff}.why .section-desc{color:rgba(255,255,255,.5)}
+  .why .section-title{color:#fff}.why .section-desc,section.why .section-desc{color:#FFFFFF;font-size:17px}
   .why-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:26px 18px;text-align:center;margin-bottom:14px}
   .why-icon{width:48px;height:48px;background:rgba(201,162,39,.15);border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
   .why-icon svg{width:24px;height:24px}
   .why-card h3{font-size:16px;font-weight:700;margin-bottom:5px}
-  .why-card p{font-size:13px;color:rgba(255,255,255,.55)}
+  .why-card p{font-size:14px;color:#FFFFFF}
 
   /* Ajuste para scroll con header fijo */
   #instrumentos{scroll-margin-top:70px}
@@ -984,6 +984,262 @@
     .nav-cta{padding:0 11px;font-size:11px}
   }
 
+
+  /* ===== ENCABEZADO: LOGO SIN APARIENCIA DE BOTÓN ===== */
+  .nav-logo{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:transparent;
+    border:none;
+    box-shadow:none;
+    padding:0;
+    height:auto;
+    border-radius:0;
+    text-decoration:none;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .nav-logo img{
+    display:block;
+    width:30px;
+    height:30px;
+    object-fit:contain;
+    flex-shrink:0;
+  }
+  .nav-logo span{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    font-size:19px;
+    font-weight:700;
+    letter-spacing:.3px;
+    color:#1a1a1a;
+    white-space:nowrap;
+  }
+  @media(hover:hover) and (pointer:fine){
+    .nav-logo:hover{
+      background:transparent;
+      border:none;
+      box-shadow:none;
+      transform:none;
+    }
+  }
+  .nav-logo:active{
+    transform:none;
+    box-shadow:none;
+  }
+  .nav-logo:focus-visible{
+    outline:2px solid #C9A227;
+    outline-offset:3px;
+    border-radius:6px;
+  }
+
+  /* ===== BOTÓN HAMBURGUESA ===== */
+  .nav-menu-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:40px;
+    height:40px;
+    border-radius:12px;
+    border:1.5px solid #D8D5CF;
+    background:#F8F7F4;
+    color:#1a1a1a;
+    cursor:pointer;
+    -webkit-appearance:none;
+    -webkit-tap-highlight-color:transparent;
+    transition:background-color .25s ease,border-color .25s ease,box-shadow .25s ease;
+    flex-shrink:0;
+  }
+  .nav-menu-btn:focus-visible{
+    outline:2px solid #C9A227;
+    outline-offset:2px;
+  }
+  @media(hover:hover) and (pointer:fine){
+    .nav-menu-btn:hover{
+      background:#FFFFFF;
+      border-color:#C4C1BA;
+      box-shadow:0 3px 10px rgba(0,0,0,.08);
+    }
+  }
+  .nav-menu-btn:active{
+    box-shadow:none;
+  }
+
+  /* ===== PANEL LATERAL ===== */
+  .side-panel-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.45);
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .3s ease,visibility .3s ease;
+    z-index:1500;
+  }
+  .side-panel-overlay.open{
+    opacity:1;
+    visibility:visible;
+  }
+  .side-panel{
+    position:fixed;
+    top:0;
+    right:0;
+    height:100%;
+    width:280px;
+    max-width:85vw;
+    background:#fff;
+    z-index:1600;
+    transform:translateX(100%);
+    transition:transform .35s cubic-bezier(.4,0,.2,1);
+    box-shadow:-4px 0 25px rgba(0,0,0,.12);
+    display:flex;
+    flex-direction:column;
+    padding:20px 0;
+    overflow-y:auto;
+  }
+  .side-panel.open{
+    transform:translateX(0);
+  }
+  .side-panel-close{
+    align-self:flex-end;
+    margin:0 16px 18px 16px;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    border:1.5px solid #D8D5CF;
+    background:#F8F7F4;
+    color:#1a1a1a;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    -webkit-appearance:none;
+    -webkit-tap-highlight-color:transparent;
+    transition:background-color .2s ease,border-color .2s ease;
+    flex-shrink:0;
+  }
+  .side-panel-close:focus-visible{
+    outline:2px solid #C9A227;
+    outline-offset:2px;
+  }
+  @media(hover:hover) and (pointer:fine){
+    .side-panel-close:hover{
+      background:#FFFFFF;
+      border-color:#C4C1BA;
+    }
+  }
+  .side-panel-nav{
+    display:flex;
+    flex-direction:column;
+    padding:0 10px;
+  }
+  .side-panel-link{
+    display:block;
+    padding:14px 16px;
+    font-size:16px;
+    font-weight:600;
+    color:#1a1a1a;
+    text-decoration:none;
+    border-radius:12px;
+    transition:background-color .2s ease,color .2s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .side-panel-link:focus-visible{
+    outline:2px solid #C9A227;
+    outline-offset:2px;
+  }
+  @media(hover:hover) and (pointer:fine){
+    .side-panel-link:hover{
+      background:rgba(201,162,39,.12);
+      color:#1a1a1a;
+    }
+  }
+  .side-panel-link:active{
+    background:rgba(201,162,39,.18);
+  }
+
+  /* Ajustes responsive del encabezado */
+  @media(max-width:767px){
+    .nav-logo img{width:26px;height:26px}
+    .nav-logo span{font-size:16px}
+    .nav-menu-btn{width:36px;height:36px;border-radius:11px}
+  }
+  @media(max-width:400px){
+    .nav-logo{gap:7px}
+    .nav-logo img{width:22px;height:22px}
+    .nav-logo span{font-size:14px;letter-spacing:0}
+    .nav-menu-btn{width:34px;height:34px}
+    .side-panel{width:250px}
+  }
+
+  /* Bloquear scroll del body cuando el panel está abierto */
+  body.panel-open{
+    overflow:hidden;
+  }
+
+
+  /* ===== FOOTER DEL PANEL LATERAL (INFO INSTITUCIONAL) ===== */
+  .side-panel-footer{
+    margin-top:auto;
+    padding:18px 20px 6px;
+    border-top:1px solid rgba(0,0,0,.06);
+  }
+  .side-panel-social{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:12px;
+  }
+  .side-panel-social a{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    color:#777;
+    text-decoration:none;
+    -webkit-tap-highlight-color:transparent;
+    transition:color .2s ease;
+  }
+  .side-panel-social a svg{
+    width:17px;
+    height:17px;
+    display:block;
+  }
+  .side-panel-social a:focus-visible{
+    outline:2px solid #C9A227;
+    outline-offset:3px;
+    border-radius:4px;
+  }
+  @media(hover:hover) and (pointer:fine){
+    .side-panel-social a:hover{
+      color:#1a1a1a;
+    }
+  }
+  .side-panel-contact{
+    display:flex;
+    flex-direction:column;
+    gap:5px;
+  }
+  .side-panel-contact a{
+    font-size:12px;
+    color:#888;
+    text-decoration:none;
+    line-height:1.5;
+    word-break:break-all;
+    -webkit-tap-highlight-color:transparent;
+    transition:color .2s ease;
+  }
+  .side-panel-contact a:focus-visible{
+    outline:2px solid #C9A227;
+    outline-offset:2px;
+    border-radius:4px;
+  }
+  @media(hover:hover) and (pointer:fine){
+    .side-panel-contact a:hover{
+      color:#1a1a1a;
+    }
+  }
+
+
+  /* Ajuste exclusivo del encabezado «¿Por qué nosotros?» */
+  .section.why .section-header > .section-tag{color:#FFFFFF;font-size:14px}
 </style>
 <script 
   src="https://www.paypal.com/sdk/js?client-id=BAA2fCCS78YpjBAEo8o6kACMQqmVOl7X7ijWPwhu5tGwEsRQd0fPAms0qWvXBDhPpkXSizdv1tjVIJacWo&components=hosted-buttons&disable-funding=venmo&currency=USD">
@@ -998,15 +1254,43 @@
       <img src="/Images/logo-academia-christian-bach.png" alt="Logo Academia Christian Bach" width="26" height="26">
       <span>Academia Christian Bach</span>
     </a>
-    <div style="display:flex;align-items:center;gap:8px;">
-      <button class="nav-back" id="navBack" onclick="goCourses()" aria-label="Volver a la sección de instrumentos">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        Volver
-      </button>
-      <button class="nav-cta" onclick="goContact()">Reservar</button>
-    </div>
+    <button class="nav-menu-btn" id="navMenuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="sidePanel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
   </div>
 </div>
+
+<!-- PANEL LATERAL -->
+<div class="side-panel-overlay" id="sidePanelOverlay"></div>
+<aside class="side-panel" id="sidePanel" aria-hidden="true">
+  <button class="side-panel-close" id="sidePanelClose" aria-label="Cerrar menú">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <nav class="side-panel-nav">
+    <a href="#home-courses" class="side-panel-link">Instrumentos</a>
+    <a href="#home-pricing" class="side-panel-link">Modalidades</a>
+    <a href="#home-about" class="side-panel-link">Sobre nosotros</a>
+    <a href="#home-reviews" class="side-panel-link">Reseñas</a>
+    <a href="#home-contact" class="side-panel-link">Contacto</a>
+  </nav>
+  <div class="side-panel-footer">
+    <div class="side-panel-social">
+      <a href="https://www.instagram.com/academiachristianbach/" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.youtube.com/@AcademiaChristianBach" target="_blank" rel="noopener" aria-label="YouTube">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://share.google/PDPrMSfv2rn9blVs2" target="_blank" rel="noopener" aria-label="Google">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+      </a>
+    </div>
+    <div class="side-panel-contact">
+      <a href="mailto:academiachristianbach@gmail.com">academiachristianbach@gmail.com</a>
+      <a href="https://wa.me/573214502161" target="_blank" rel="noopener">+57 321 450 2161</a>
+    </div>
+  </div>
+</aside>
 
 <!-- ===================== HOME ===================== -->
 <div class="page active" id="page-home">
@@ -1102,7 +1386,7 @@
       <div class="course-card" onclick="goTo('bajo')"><div class="course-img bajo"><img src="https://images.pexels.com/photos/37173826/pexels-photo-37173826.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Bajo eléctrico" loading="lazy"></div><div class="course-body"><h3>Bajo Eléctrico</h3><p>La base de toda banda. Groove infalible.</p><div class="course-meta"><span class="course-level">Todos los niveles</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
       <div class="course-card" onclick="goTo('ukelele')"><div class="course-img ukelele"><img src="https://images.pexels.com/photos/13015139/pexels-photo-13015139.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Ukelele" loading="lazy"><span class="course-badge">Ideal niños</span></div><div class="course-body"><h3>Ukulele</h3><p>Pequeño, divertido y perfecto para empezar.</p><div class="course-meta"><span class="course-level">Principiantes</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
       <div class="course-card" onclick="goTo('voz')"><div class="course-img voz"><img src="https://images.pexels.com/photos/164829/pexels-photo-164829.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Técnica vocal" loading="lazy"></div><div class="course-body"><h3>Técnica Vocal</h3><p>Encuentra tu voz. Canta con confianza.</p><div class="course-meta"><span class="course-level">Todos los niveles</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
-      <div class="course-card" onclick="goTo('produccion')"><div class="course-img produccion"><img src="https://images.pexels.com/photos/36358778/pexels-photo-36358778.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Producción musical" loading="lazy"><span class="course-badge">Nuevo</span></div><div class="course-body"><h3>Producción Musical</h3><p>Crea beats y mezcla como un pro.</p><div class="course-meta"><span class="course-level">Intermedio+</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
+      <div class="course-card" onclick="goTo('produccion')"><div class="course-img produccion"><img src="https://images.pexels.com/photos/36358778/pexels-photo-36358778.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Producción musical" loading="lazy"><span class="course-badge">Nuevo</span></div><div class="course-body"><h3>Producción Musical</h3><p>Crea beats y mezcla como un profesional</p><div class="course-meta"><span class="course-level">Intermedio+</span><div class="course-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div></div></div>
     </div>
   </div>
 </div>
@@ -2120,35 +2404,104 @@
 
 <!-- ===================== JAVASCRIPT ===================== -->
 <script>
+/* La navegación entre páginas internas no debe heredar el scroll anterior. */
+if ('scrollRestoration' in history) {
+  history.scrollRestoration = 'manual';
+}
+
+var navigationScrollTimer = null;
+
+function clearNavigationScrollTimer(){
+  if(navigationScrollTimer !== null){
+    clearTimeout(navigationScrollTimer);
+    navigationScrollTimer = null;
+  }
+}
+
+/* Restablece el scroll de forma inmediata, evitando que scroll-behavior:smooth
+   anime o compita con la activación de la página recién seleccionada. */
+function resetPageScroll(){
+  var html = document.documentElement;
+  var body = document.body;
+  var previousHtmlBehavior = html.style.scrollBehavior;
+  var previousBodyBehavior = body.style.scrollBehavior;
+
+  html.style.scrollBehavior = 'auto';
+  body.style.scrollBehavior = 'auto';
+
+  window.scrollTo(0, 0);
+  html.scrollTop = 0;
+  body.scrollTop = 0;
+
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      window.scrollTo(0, 0);
+      html.scrollTop = 0;
+      body.scrollTop = 0;
+      html.style.scrollBehavior = previousHtmlBehavior;
+      body.style.scrollBehavior = previousBodyBehavior;
+    });
+  });
+}
+
 function goHome(){
-  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
-  document.getElementById('page-home').classList.add('active');
-  document.getElementById('navBack').style.display='none';
-  window.scrollTo({top:0,behavior:'smooth'});
+  clearNavigationScrollTimer();
+
+  document.querySelectorAll('.page').forEach(function(p){
+    p.classList.remove('active');
+  });
+
+  var homePage = document.getElementById('page-home');
+  if(homePage) homePage.classList.add('active');
+
+  /* navBack no existe en este HTML; comprobarlo evita errores JS. */
+  var navBack = document.getElementById('navBack');
+  if(navBack) navBack.style.display = 'none';
+
+  resetPageScroll();
 }
+
 function goTo(inst){
-  document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
-  document.getElementById('page-'+inst).classList.add('active');
-  document.getElementById('navBack').style.display='flex';
-  window.scrollTo({top:0,behavior:'smooth'});
+  clearNavigationScrollTimer();
+
+  var targetPage = document.getElementById('page-' + inst);
+  if(!targetPage) return;
+
+  document.querySelectorAll('.page').forEach(function(p){
+    p.classList.remove('active');
+  });
+
+  targetPage.classList.add('active');
+
+  var navBack = document.getElementById('navBack');
+  if(navBack) navBack.style.display = 'flex';
+
+  /* Espera a que el navegador aplique display:block y calcule el nuevo
+     contenido antes de fijar el inicio de la página del instrumento. */
+  resetPageScroll();
 }
+
 function goCourses(){
   goHome();
-  setTimeout(function(){
-    var el=document.getElementById('instrumentos');
+  navigationScrollTimer = setTimeout(function(){
+    navigationScrollTimer = null;
+    var el = document.getElementById('instrumentos');
     if(el){
-      var navHeight = document.querySelector('.nav').offsetHeight;
+      var nav = document.querySelector('.nav');
+      var navHeight = nav ? nav.offsetHeight : 0;
       var top = el.getBoundingClientRect().top + window.pageYOffset - navHeight - 12;
       window.scrollTo({top: top, behavior: 'smooth'});
     }
-  },400);
+  }, 400);
 }
+
 function goContact(){
   goHome();
-  setTimeout(function(){
-    var el=document.getElementById('home-contact');
-    if(el)el.scrollIntoView({behavior:'smooth'});
-  },350);
+  navigationScrollTimer = setTimeout(function(){
+    navigationScrollTimer = null;
+    var el = document.getElementById('home-contact');
+    if(el) el.scrollIntoView({behavior:'smooth'});
+  }, 350);
 }
 
 /* Si se entra a la página con el hash #instrumentos, ir directo a las tarjetas */
@@ -2291,6 +2644,65 @@ window.addEventListener('load',function(){
   setPos(0);
   rafId = requestAnimationFrame(loop);
 })();
+
+/* ===== MENÚ LATERAL (PANEL OFF-CANVAS) ===== */
+(function(){
+  var menuBtn = document.getElementById('navMenuBtn');
+  var panel = document.getElementById('sidePanel');
+  var overlay = document.getElementById('sidePanelOverlay');
+  var closeBtn = document.getElementById('sidePanelClose');
+  var links = panel ? panel.querySelectorAll('.side-panel-link') : [];
+
+  function openPanel(){
+    panel.classList.add('open');
+    overlay.classList.add('open');
+    panel.setAttribute('aria-hidden','false');
+    menuBtn.setAttribute('aria-expanded','true');
+    document.body.classList.add('panel-open');
+  }
+  function closePanel(){
+    panel.classList.remove('open');
+    overlay.classList.remove('open');
+    panel.setAttribute('aria-hidden','true');
+    menuBtn.setAttribute('aria-expanded','false');
+    document.body.classList.remove('panel-open');
+  }
+
+  if(menuBtn) menuBtn.addEventListener('click', openPanel);
+  if(closeBtn) closeBtn.addEventListener('click', closePanel);
+  if(overlay) overlay.addEventListener('click', closePanel);
+
+  links.forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      closePanel();
+      var target = link.getAttribute('href');
+      if(target && target.charAt(0) === '#'){
+        var onHome = document.getElementById('page-home').classList.contains('active');
+        if(!onHome){
+          document.querySelectorAll('.page').forEach(function(p){p.classList.remove('active')});
+          document.getElementById('page-home').classList.add('active');
+          var nb = document.getElementById('navBack');
+          if(nb) nb.style.display='none';
+          window.scrollTo(0,0);
+        }
+        setTimeout(function(){
+          var el = document.querySelector(target);
+          if(el){
+            el.scrollIntoView({behavior:'smooth', block:'start'});
+          }
+        }, onHome ? 250 : 100);
+      }
+    });
+  });
+
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && panel.classList.contains('open')){
+      closePanel();
+    }
+  });
+})();
+
 </script>
 
 </body>
